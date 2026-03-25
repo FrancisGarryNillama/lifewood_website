@@ -1,2 +1,99 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* ── CSS Variables / Design Tokens ─────────────────────────────────────── */
+:root {
+  /* Brand colors */
+  --color-green:        #2D6A4F;
+  --color-green-light:  #40916C;
+  --color-green-muted:  #f0faf5;
+  --color-amber:        #F5A623;
+  --color-amber-light:  #fbbf24;
+
+  /* Neutrals */
+  --color-bg:           #ffffff;
+  --color-surface:      #f8f9fa;
+  --color-border:       #e5e7eb;
+  --color-text:         #1a1a1a;
+  --color-text-muted:   #6b7280;
+
+  /* Typography */
+  --font-sans:          var(--font-geist), system-ui, sans-serif;
+  --font-serif:         Georgia, 'Times New Roman', serif;
+
+  /* Spacing / layout */
+  --nav-height:         72px;
+  --max-width:          1400px;
+  --section-padding-x:  clamp(1.5rem, 5vw, 5rem);
+  --section-padding-y:  clamp(4rem, 8vw, 8rem);
+}
+
+/* ── Base resets ────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100dvh;
+}
+
+/* ── Scrollbar (Webkit) ─────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* ── Focus visible ──────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-green);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Selection ──────────────────────────────────────────────────────────── */
+::selection {
+  background-color: rgba(45, 106, 79, 0.18);
+  color: var(--color-text);
+}
+
+/* ── Utility: section wrapper ───────────────────────────────────────────── */
+.section-wrapper {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--section-padding-x);
+  padding-block: var(--section-padding-y);
+}
+
+/* ── Utility: visually-hidden ───────────────────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
