@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "name": "VSCode MCP Server",
+      "type": "STDIO",
+      "command": "vscode-mcp-server"
+    },
+    {
+      "name": "Claude MCP",
+      "type": "Claude Command",
+      "command": "claude-mcp"
+    }
+  ]
+}

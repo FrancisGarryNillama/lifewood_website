@@ -20,6 +20,11 @@ function useInView(threshold = 0.15) {
   return { ref, visible };
 }
 
+const HIDDEN_ADMIN_SECRET = "paenggwapo123";
+const API_BASE_URL = "http://127.0.0.1:8000";
+
+type AdminStatus = "idle" | "unlocking" | "ready" | "submitting" | "success" | "error";
+
 // ── 1. Hero ───────────────────────────────────────────────────────────────────
 function HeroSection() {
   return (
@@ -448,8 +453,393 @@ function CtaSection() {
   );
 }
 
+function HiddenAdminModal({
+  isOpen,
+  status,
+  username,
+  password,
+  message,
+  isAuthenticated,
+  onUsernameChange,
+  onPasswordChange,
+  onSubmit,
+  onClose,
+  onLogout,
+}: {
+  isOpen: boolean;
+  status: AdminStatus;
+  username: string;
+  password: string;
+  message: string;
+  isAuthenticated: boolean;
+  onUsernameChange: (value: string) => void;
+  onPasswordChange: (value: string) => void;
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  onClose: () => void;
+  onLogout: () => void;
+}) {
+  if (!isOpen) return null;
+
+  const isBusy = status === "unlocking" || status === "submitting";
+  const isSuccess = status === "success";
+  const isError = status === "error";
+
+  return (
+    <div
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 2000,
+        background: "rgba(17, 24, 39, 0.58)",
+        backdropFilter: "blur(10px)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 24,
+      }}
+      onClick={onClose}
+    >
+      <div
+        style={{
+          width: "100%",
+          maxWidth: 420,
+          borderRadius: 24,
+          background: "linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)",
+          boxShadow: "0 24px 80px rgba(15, 23, 42, 0.28)",
+          border: "1px solid rgba(229, 231, 235, 0.9)",
+          padding: 28,
+          position: "relative",
+        }}
+        onClick={event => event.stopPropagation()}
+      >
+        <button
+          type="button"
+          aria-label="Close hidden admin login"
+          onClick={onClose}
+          style={{
+            position: "absolute",
+            top: 16,
+            right: 16,
+            width: 34,
+            height: 34,
+            borderRadius: "50%",
+            border: "1px solid #e5e7eb",
+            background: "#fff",
+            color: "#6b7280",
+            cursor: "pointer",
+            fontSize: 18,
+            lineHeight: 1,
+          }}
+        >
+          ×
+        </button>
+
+        <div style={{ marginBottom: 24 }}>
+          <div style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            borderRadius: 999,
+            padding: "6px 12px",
+            background: "#f3f4f6",
+            color: "#374151",
+            fontSize: 11,
+            fontWeight: 700,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            marginBottom: 14,
+          }}>
+            Secure Access
+          </div>
+          <h3 style={{
+            fontSize: 28,
+            lineHeight: 1.15,
+            color: "#111827",
+            fontFamily: "Georgia, serif",
+            marginBottom: 10,
+          }}>
+            Hidden Admin Login
+          </h3>
+          <p style={{ fontSize: 14, lineHeight: 1.7, color: "#6b7280", margin: 0 }}>
+            Access is available only after the private homepage key sequence is entered.
+          </p>
+        </div>
+
+        <form onSubmit={onSubmit} style={{ display: "grid", gap: 14 }}>
+          <label style={{ display: "grid", gap: 8 }}>
+            <span style={{ fontSize: 13, fontWeight: 600, color: "#374151" }}>Username</span>
+            <input
+              value={username}
+              onChange={event => onUsernameChange(event.target.value)}
+              placeholder="admin123"
+              autoComplete="username"
+              disabled={isBusy || isAuthenticated}
+              style={{
+                width: "100%",
+                borderRadius: 14,
+                border: "1px solid #d1d5db",
+                background: isAuthenticated ? "#f9fafb" : "#fff",
+                color: "#111827",
+                padding: "14px 16px",
+                fontSize: 14,
+                outline: "none",
+              }}
+            />
+          </label>
+
+          <label style={{ display: "grid", gap: 8 }}>
+            <span style={{ fontSize: 13, fontWeight: 600, color: "#374151" }}>Password</span>
+            <input
+              type="password"
+              value={password}
+              onChange={event => onPasswordChange(event.target.value)}
+              placeholder="Enter password"
+              autoComplete="current-password"
+              disabled={isBusy || isAuthenticated}
+              style={{
+                width: "100%",
+                borderRadius: 14,
+                border: "1px solid #d1d5db",
+                background: isAuthenticated ? "#f9fafb" : "#fff",
+                color: "#111827",
+                padding: "14px 16px",
+                fontSize: 14,
+                outline: "none",
+              }}
+            />
+          </label>
+
+          {message ? (
+            <div style={{
+              borderRadius: 14,
+              padding: "12px 14px",
+              fontSize: 13,
+              lineHeight: 1.6,
+              background: isSuccess ? "#ecfdf3" : isError ? "#fef2f2" : "#f9fafb",
+              color: isSuccess ? "#166534" : isError ? "#b91c1c" : "#374151",
+              border: `1px solid ${isSuccess ? "#bbf7d0" : isError ? "#fecaca" : "#e5e7eb"}`,
+            }}>
+              {message}
+            </div>
+          ) : null}
+
+          <div style={{ display: "flex", gap: 12, marginTop: 4 }}>
+            {!isAuthenticated ? (
+              <button
+                type="submit"
+                disabled={isBusy}
+                style={{
+                  flex: 1,
+                  border: "none",
+                  borderRadius: 999,
+                  background: isBusy ? "#9ca3af" : "#111827",
+                  color: "#fff",
+                  padding: "14px 18px",
+                  fontSize: 14,
+                  fontWeight: 600,
+                  cursor: isBusy ? "not-allowed" : "pointer",
+                  transition: "background 0.2s",
+                }}
+              >
+                {status === "submitting" ? "Signing In..." : "Sign In"}
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={onLogout}
+                disabled={isBusy}
+                style={{
+                  flex: 1,
+                  border: "none",
+                  borderRadius: 999,
+                  background: isBusy ? "#9ca3af" : "#b91c1c",
+                  color: "#fff",
+                  padding: "14px 18px",
+                  fontSize: 14,
+                  fontWeight: 600,
+                  cursor: isBusy ? "not-allowed" : "pointer",
+                }}
+              >
+                {isBusy ? "Processing..." : "Log Out"}
+              </button>
+            )}
+
+            <button
+              type="button"
+              onClick={onClose}
+              disabled={isBusy}
+              style={{
+                flex: 1,
+                borderRadius: 999,
+                border: "1px solid #d1d5db",
+                background: "#fff",
+                color: "#374151",
+                padding: "14px 18px",
+                fontSize: 14,
+                fontWeight: 600,
+                cursor: isBusy ? "not-allowed" : "pointer",
+              }}
+            >
+              {isAuthenticated ? "Close" : "Cancel"}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function HomePage() {
+  const [typedSequence, setTypedSequence] = useState("");
+  const [isHiddenAdminOpen, setIsHiddenAdminOpen] = useState(false);
+  const [adminStatus, setAdminStatus] = useState<AdminStatus>("idle");
+  const [adminMessage, setAdminMessage] = useState("");
+  const [adminUsername, setAdminUsername] = useState("admin123");
+  const [adminPassword, setAdminPassword] = useState("");
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
+
+  const closeHiddenAdmin = async () => {
+    setIsHiddenAdminOpen(false);
+
+    if (isAdminAuthenticated) {
+      return;
+    }
+
+    try {
+      await fetch(`${API_BASE_URL}/hidden-admin/logout/`, {
+        method: "POST",
+        credentials: "include",
+      });
+    } catch {
+      // Intentionally silent; hidden flow should not interrupt the public homepage.
+    } finally {
+      setTypedSequence("");
+      setAdminStatus("idle");
+      setAdminMessage("");
+      setAdminPassword("");
+    }
+  };
+
+  const logoutHiddenAdmin = async () => {
+    setAdminStatus("submitting");
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/hidden-admin/logout/`, {
+        method: "POST",
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to end the hidden admin session right now.");
+      }
+
+      setIsAdminAuthenticated(false);
+      setAdminStatus("idle");
+      setAdminMessage("Hidden admin session closed.");
+      setAdminPassword("");
+      setTypedSequence("");
+      setIsHiddenAdminOpen(false);
+    } catch (error) {
+      setAdminStatus("error");
+      setAdminMessage(error instanceof Error ? error.message : "Unable to log out right now.");
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyDown = async (event: KeyboardEvent) => {
+      if (event.ctrlKey || event.metaKey || event.altKey) return;
+
+      const target = event.target as HTMLElement | null;
+      const tagName = target?.tagName?.toLowerCase();
+
+      if (tagName === "input" || tagName === "textarea" || target?.isContentEditable) {
+        return;
+      }
+
+      const key = event.key.toLowerCase();
+
+      if (key.length !== 1) {
+        return;
+      }
+
+      const nextSequence = `${typedSequence}${key}`.slice(-HIDDEN_ADMIN_SECRET.length);
+      setTypedSequence(nextSequence);
+
+      if (nextSequence !== HIDDEN_ADMIN_SECRET) {
+        return;
+      }
+
+      setAdminStatus("unlocking");
+      setAdminMessage("");
+      setAdminPassword("");
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/hidden-admin/unlock/`, {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ secret: HIDDEN_ADMIN_SECRET }),
+        });
+
+        const data = await response.json().catch(() => null);
+
+        if (!response.ok) {
+          throw new Error(data?.detail || data?.message || "Hidden admin access could not be opened.");
+        }
+
+        setIsHiddenAdminOpen(true);
+        setAdminStatus("ready");
+        setAdminMessage("Access unlocked. Continue with your administrator credentials.");
+        setTypedSequence("");
+      } catch (error) {
+        setAdminStatus("error");
+        setAdminMessage(error instanceof Error ? error.message : "Hidden admin access could not be opened.");
+        setTypedSequence("");
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [typedSequence]);
+
+  const handleAdminSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setAdminStatus("submitting");
+    setAdminMessage("");
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/hidden-admin/login/`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: adminUsername,
+          password: adminPassword,
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(data?.detail || data?.message || "Unable to sign in.");
+      }
+
+      setIsAdminAuthenticated(true);
+      setAdminStatus("success");
+      setAdminMessage(data?.message || "Hidden admin login successful.");
+      setAdminPassword("");
+    } catch (error) {
+      setIsAdminAuthenticated(false);
+      setAdminStatus("error");
+      setAdminMessage(error instanceof Error ? error.message : "Unable to sign in.");
+    }
+  };
+
   return (
     <>
       <HeroSection />
@@ -458,6 +848,19 @@ export default function HomePage() {
       <ServicesSection />
       <ClientsSection />
       <CtaSection />
+      <HiddenAdminModal
+        isOpen={isHiddenAdminOpen}
+        status={adminStatus}
+        username={adminUsername}
+        password={adminPassword}
+        message={adminMessage}
+        isAuthenticated={isAdminAuthenticated}
+        onUsernameChange={setAdminUsername}
+        onPasswordChange={setAdminPassword}
+        onSubmit={handleAdminSubmit}
+        onClose={closeHiddenAdmin}
+        onLogout={logoutHiddenAdmin}
+      />
     </>
   );
 }

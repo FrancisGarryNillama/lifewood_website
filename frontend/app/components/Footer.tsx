@@ -1,6 +1,7 @@
-'use client';
+"use client";
 
 import Link from "next/link";
+import LifewoodLogo from "./LifewoodLogo";
 
 // ── Social icon helper ────────────────────────────────────────────────────────
 function SocialLink({ href, label, children }: { href: string; label: string; children: React.ReactNode }) {
@@ -33,22 +34,6 @@ function SocialLink({ href, label, children }: { href: string; label: string; ch
   );
 }
 
-// ── Logo ──────────────────────────────────────────────────────────────────────
-function FooterLogo() {
-  return (
-    <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: 8, textDecoration: "none" }}>
-      <svg width="24" height="30" viewBox="0 0 28 34" fill="none" aria-hidden="true">
-        <path d="M14 0C14 0 26 8 26 18C26 25.732 20.627 32 14 32C7.373 32 2 25.732 2 18C2 8 14 0 14 0Z" fill="#F5A623" />
-        <path d="M14 8C14 8 21 13 21 19C21 23.418 17.866 27 14 27C10.134 27 7 23.418 7 19C7 13 14 8 14 8Z" fill="#2D6A4F" />
-      </svg>
-      <span style={{ fontFamily: "Georgia, serif", fontSize: "1.3rem", fontWeight: 700, letterSpacing: "-0.02em" }}>
-        <span style={{ color: "#2D6A4F" }}>life</span>
-        <span style={{ color: "#fff" }}>wood</span>
-      </span>
-    </Link>
-  );
-}
-
 // ── Main Footer ───────────────────────────────────────────────────────────────
 export default function Footer() {
   return (
@@ -64,7 +49,7 @@ export default function Footer() {
       }}>
         {/* Brand column */}
         <div>
-          <FooterLogo />
+          <LifewoodLogo width={200} wordmarkColor="#ffffff" />
           <p style={{
             fontSize: 14, color: "rgba(255,255,255,0.55)",
             lineHeight: 1.75, marginTop: 20, marginBottom: 28, maxWidth: 280,

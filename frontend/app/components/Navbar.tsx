@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import LifewoodLogo from "./LifewoodLogo";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 interface DropdownItem {
@@ -45,22 +46,6 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Contact Us", href: "/contact-us" },
   { label: "Internal News", href: "/internal-news" },
 ];
-
-// ── Logo ──────────────────────────────────────────────────────────────────────
-function LifewoodLogo() {
-  return (
-    <Link href="/" className="flex items-center gap-2 select-none flex-shrink-0">
-      <svg width="26" height="32" viewBox="0 0 28 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M14 0C14 0 26 8 26 18C26 25.732 20.627 32 14 32C7.373 32 2 25.732 2 18C2 8 14 0 14 0Z" fill="#F5A623" />
-        <path d="M14 8C14 8 21 13 21 19C21 23.418 17.866 27 14 27C10.134 27 7 23.418 7 19C7 13 14 8 14 8Z" fill="#2D6A4F" />
-      </svg>
-      <span style={{ fontFamily: "Georgia, serif", letterSpacing: "-0.02em" }} className="text-2xl font-bold">
-        <span style={{ color: "#2D6A4F" }}>life</span>
-        <span style={{ color: "#1a1a1a" }}>wood</span>
-      </span>
-    </Link>
-  );
-}
 
 // ── Chevron ───────────────────────────────────────────────────────────────────
 function ChevronDown({ open }: { open: boolean }) {
@@ -136,7 +121,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "16px 24px", borderBottom: "1px solid #e5e7eb",
       }}>
-        <LifewoodLogo />
+        <LifewoodLogo width={180} />
         <button onClick={onClose} style={{ padding: 8, cursor: "pointer", background: "none", border: "none" }} aria-label="Close menu">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path d="M4 4L16 16M16 4L4 16" stroke="#1a1a1a" strokeWidth="1.8" strokeLinecap="round" />
@@ -238,7 +223,7 @@ export default function Navbar() {
           alignItems: "center",
           justifyContent: "space-between",
         }}>
-          <LifewoodLogo />
+          <LifewoodLogo width={210} />
 
           {/* Only render nav after mount to avoid SSR/hydration mismatch */}
           {mounted && (
