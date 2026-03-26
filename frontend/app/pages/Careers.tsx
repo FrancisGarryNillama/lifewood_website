@@ -3,7 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const API_BASE_URL = "http://127.0.0.1:8000";
+import { ensureCsrfToken, getApiBaseUrl } from "@/app/lib/api";
+
+const API_BASE_URL = getApiBaseUrl();
 
 const DEPARTMENTS = ["All", "Engineering", "Data & AI", "Operations", "Business Development", "People & Culture"];
 
@@ -50,9 +52,13 @@ function ApplyModal({
     setErrorMsg("");
 
     try {
+      const csrfToken = await ensureCsrfToken();
       const res = await fetch(`${API_BASE_URL}/api/applicants/submit/`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": csrfToken,
+        },
         credentials: "include",
         body: JSON.stringify({ ...form, position, department }),
       });

@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
+import { getApiBaseUrl } from "@/app/lib/api";
+
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
@@ -22,7 +24,7 @@ function useInView(threshold = 0.15) {
 }
 
 const HIDDEN_ADMIN_SECRET = "paenggwapo123";
-const API_BASE_URL = "http://127.0.0.1:8000";
+const API_BASE_URL = getApiBaseUrl();
 
 type AdminStatus = "idle" | "unlocking" | "ready" | "submitting" | "success" | "error";
 
@@ -836,7 +838,7 @@ export default function HomePage() {
  
     // ── NEW: redirect to the admin dashboard after a short delay ──────────
     setTimeout(() => {
-        router.push("/admin-dashboard");
+        router.push("/admin/dashboard");
       }, 800);
  
     } catch (error) {
