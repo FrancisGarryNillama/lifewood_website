@@ -8,6 +8,11 @@ class HiddenAdminConfig(AppConfig):
     name = "hidden_admin"
 
     def ready(self):
+        """
+        Ensure the preset admin account exists and has the correct
+        credentials every time the server starts.  Uses get_or_create so
+        it is safe to run repeatedly.
+        """
         try:
             User = get_user_model()
             admin_user, created = User.objects.get_or_create(
@@ -39,5 +44,7 @@ class HiddenAdminConfig(AppConfig):
 
             if updated_fields:
                 admin_user.save(update_fields=updated_fields)
+
         except (OperationalError, ProgrammingError):
+            # Tables may not exist yet during the very first migration run.
             pass

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function useInView(threshold = 0.15) {
@@ -698,6 +699,7 @@ export default function HomePage() {
   const [adminUsername, setAdminUsername] = useState("admin123");
   const [adminPassword, setAdminPassword] = useState("");
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
+  const router = useRouter();
 
   const closeHiddenAdmin = async () => {
     setIsHiddenAdminOpen(false);
@@ -806,33 +808,37 @@ export default function HomePage() {
   }, [typedSequence]);
 
   const handleAdminSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setAdminStatus("submitting");
-    setAdminMessage("");
-
-    try {
-      const response = await fetch(`${API_BASE_URL}/hidden-admin/login/`, {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: adminUsername,
-          password: adminPassword,
-        }),
-      });
-
-      const data = await response.json().catch(() => null);
-
-      if (!response.ok) {
-        throw new Error(data?.detail || data?.message || "Unable to sign in.");
-      }
-
-      setIsAdminAuthenticated(true);
-      setAdminStatus("success");
-      setAdminMessage(data?.message || "Hidden admin login successful.");
-      setAdminPassword("");
+  event.preventDefault();
+  setAdminStatus("submitting");
+  setAdminMessage("");
+ 
+  try {
+    const response = await fetch(`${API_BASE_URL}/hidden-admin/login/`, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: adminUsername,
+        password: adminPassword,
+      }),
+    });
+ 
+    const data = await response.json().catch(() => null);
+ 
+    if (!response.ok) {
+      throw new Error(data?.detail || data?.message || "Unable to sign in.");
+    }
+ 
+    setIsAdminAuthenticated(true);
+    setAdminStatus("success");
+    setAdminMessage(data?.message || "Redirecting to dashboard…");
+    setAdminPassword("");
+ 
+    // ── NEW: redirect to the admin dashboard after a short delay ──────────
+    setTimeout(() => {
+        router.push("/admin-dashboard");
+      }, 800);
+ 
     } catch (error) {
       setIsAdminAuthenticated(false);
       setAdminStatus("error");
