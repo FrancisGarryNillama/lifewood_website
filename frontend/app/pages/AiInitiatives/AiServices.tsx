@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import Link from "next/link";
 
-// ── Data ──────────────────────────────────────────────────────────────────────
+// Ã¢"â‚¬Ã¢"â‚¬ Data Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬
 const SERVICE_CARDS = [
   {
     category: "Video",
@@ -37,7 +37,7 @@ const SERVICE_CARDS = [
   },
 ];
 
-// ── Tab Indicator ─────────────────────────────────────────────────────────────
+// Ã¢"â‚¬Ã¢"â‚¬ Tab Indicator Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬
 function TabIndicator({ active }: { active: number }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 20 }}>
@@ -48,8 +48,8 @@ function TabIndicator({ active }: { active: number }) {
             width: i === active ? 20 : 20,
             height: 20,
             borderRadius: "50%",
-            background: i === active ? "#1a1a1a" : "transparent",
-            border: i === active ? "none" : "2px solid #9ca3af",
+            background: i === active ? "#133020" : "transparent",
+            border: i === active ? "none" : "2px solid #6E7D71",
             display: "inline-block",
             transition: "background 0.2s",
           }}
@@ -59,14 +59,14 @@ function TabIndicator({ active }: { active: number }) {
       <span style={{
         display: "inline-block",
         width: 120,
-        borderTop: "2px dashed #d1d5db",
+        borderTop: "2px dashed rgba(19,48,32,0.2)",
         marginLeft: 4,
       }} />
     </div>
   );
 }
 
-// ── Service Card ──────────────────────────────────────────────────────────────
+// Ã¢"â‚¬Ã¢"â‚¬ Service Card Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬
 function ServiceCard({ category, description }: { category: string; description: string }) {
   const [hovered, setHovered] = useState(false);
 
@@ -78,7 +78,7 @@ function ServiceCard({ category, description }: { category: string; description:
         minWidth: 220,
         maxWidth: 220,
         padding: "28px 0",
-        borderRight: "1px solid #e5e7eb",
+        borderRight: "1px solid rgba(19,48,32,0.16)",
         paddingRight: 32,
         paddingLeft: 8,
         flexShrink: 0,
@@ -91,22 +91,22 @@ function ServiceCard({ category, description }: { category: string; description:
         style={{
           fontSize: 22,
           fontWeight: 600,
-          color: hovered ? "#2D6A4F" : "#1a1a1a",
+          color: hovered ? "#046241" : "#133020",
           marginBottom: 14,
           transition: "color 0.2s",
-          fontFamily: "Georgia, serif",
+          fontFamily: "Arial, sans-serif",
         }}
       >
         {category}
       </h3>
-      <p style={{ fontSize: 14, color: "#6b7280", lineHeight: 1.65, margin: 0 }}>
+      <p style={{ fontSize: 14, color: "#5B6A5E", lineHeight: 1.65, margin: 0 }}>
         {description}
       </p>
     </div>
   );
 }
 
-// ── Main Page ─────────────────────────────────────────────────────────────────
+// Ã¢"â‚¬Ã¢"â‚¬ Main Page Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬
 export default function AiServices() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -128,7 +128,7 @@ export default function AiServices() {
   return (
     <div style={{ background: "#fff", minHeight: "100vh" }}>
 
-      {/* ── Hero / Intro Section ─────────────────────────────────────────── */}
+      {/* Ã¢"â‚¬Ã¢"â‚¬ Hero / Intro Section Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬ */}
       <section style={{
         maxWidth: 1400,
         margin: "0 auto",
@@ -140,23 +140,23 @@ export default function AiServices() {
           fontSize: "clamp(2.4rem, 5vw, 4rem)",
           fontWeight: 800,
           letterSpacing: "-0.01em",
-          color: "#1a1a1a",
+          color: "#133020",
           marginBottom: 28,
           lineHeight: 1.05,
           textTransform: "uppercase",
-          fontFamily: "Georgia, serif",
+          fontFamily: "Arial, sans-serif",
         }}>
           AI DATA SERVICES
         </h1>
 
         <p style={{
           fontSize: 15,
-          color: "#374151",
+          color: "#133020",
           lineHeight: 1.75,
           maxWidth: 680,
           marginBottom: 36,
         }}>
-          Lifewood delivers end-to-end AI data solutions—from multi-language data collection
+          Lifewood delivers end-to-end AI data solutionsÃ¢â‚¬"from multi-language data collection
           and annotation to model training and generative AI content. Leveraging our global
           workforce, industrialized methodology, and proprietary LiFT platform, we enable
           organizations to scale efficiently, reduce costs, and accelerate decision-making
@@ -171,7 +171,7 @@ export default function AiServices() {
               display: "inline-flex",
               alignItems: "center",
               gap: 10,
-              background: "#F5A623",
+              background: "#FFC370",
               color: "#fff",
               padding: "12px 24px",
               borderRadius: 999,
@@ -180,8 +180,8 @@ export default function AiServices() {
               textDecoration: "none",
               transition: "background 0.2s",
             }}
-            onMouseEnter={e => (e.currentTarget.style.background = "#e09610")}
-            onMouseLeave={e => (e.currentTarget.style.background = "#F5A623")}
+            onMouseEnter={e => (e.currentTarget.style.background = "#FFB347")}
+            onMouseLeave={e => (e.currentTarget.style.background = "#FFC370")}
           >
             Contact Us
             <span style={{
@@ -191,7 +191,7 @@ export default function AiServices() {
               width: 28,
               height: 28,
               borderRadius: "50%",
-              background: "#2D6A4F",
+              background: "#046241",
               flexShrink: 0,
             }}>
               <svg width="13" height="13" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -202,7 +202,7 @@ export default function AiServices() {
         </div>
       </section>
 
-      {/* ── Services Carousel ────────────────────────────────────────────── */}
+      {/* Ã¢"â‚¬Ã¢"â‚¬ Services Carousel Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬ */}
       <section style={{
         maxWidth: 1400,
         margin: "0 auto",
@@ -224,7 +224,7 @@ export default function AiServices() {
               height: 40,
               borderRadius: "50%",
               background: "#fff",
-              border: "1px solid #e5e7eb",
+              border: "1px solid rgba(19,48,32,0.16)",
               boxShadow: "0 2px 8px rgba(0,0,0,0.10)",
               cursor: "pointer",
               display: "flex",
@@ -233,7 +233,7 @@ export default function AiServices() {
             }}
           >
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M10 4L6 8L10 12" stroke="#374151" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M10 4L6 8L10 12" stroke="#133020" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         )}
@@ -252,7 +252,7 @@ export default function AiServices() {
               height: 40,
               borderRadius: "50%",
               background: "#fff",
-              border: "1px solid #e5e7eb",
+              border: "1px solid rgba(19,48,32,0.16)",
               boxShadow: "0 2px 8px rgba(0,0,0,0.10)",
               cursor: "pointer",
               display: "flex",
@@ -261,13 +261,13 @@ export default function AiServices() {
             }}
           >
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M6 4L10 8L6 12" stroke="#374151" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M6 4L10 8L6 12" stroke="#133020" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         )}
 
         {/* Top border */}
-        <div style={{ borderTop: "1px solid #e5e7eb", marginBottom: 0 }} />
+        <div style={{ borderTop: "1px solid rgba(19,48,32,0.16)", marginBottom: 0 }} />
 
         {/* Scrollable cards row */}
         <div
@@ -288,12 +288,12 @@ export default function AiServices() {
         </div>
 
         {/* Bottom border */}
-        <div style={{ borderTop: "1px solid #e5e7eb" }} />
+        <div style={{ borderTop: "1px solid rgba(19,48,32,0.16)" }} />
       </section>
 
-      {/* ── Dark Feature Section ─────────────────────────────────────────── */}
+      {/* Ã¢"â‚¬Ã¢"â‚¬ Dark Feature Section Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬Ã¢"â‚¬ */}
       <section style={{
-        background: "#111827",
+        background: "#046241",
         margin: "0 80px",
         borderRadius: 20,
         padding: "72px 80px",
@@ -309,7 +309,7 @@ export default function AiServices() {
         }}>
           {/* Left */}
           <div>
-            <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.15em", color: "#F5A623", textTransform: "uppercase", marginBottom: 16 }}>
+            <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.15em", color: "#FFC370", textTransform: "uppercase", marginBottom: 16 }}>
               Our Platform
             </p>
             <h2 style={{
@@ -318,14 +318,14 @@ export default function AiServices() {
               color: "#fff",
               lineHeight: 1.2,
               marginBottom: 24,
-              fontFamily: "Georgia, serif",
+              fontFamily: "Arial, sans-serif",
             }}>
               Powered by the LiFT Platform
             </h2>
-            <p style={{ fontSize: 15, color: "#9ca3af", lineHeight: 1.75, marginBottom: 32 }}>
+            <p style={{ fontSize: 15, color: "#6E7D71", lineHeight: 1.75, marginBottom: 32 }}>
               Our proprietary LiFT (Lifewood Integrated Flow Technology) platform orchestrates
-              every stage of the data pipeline—from task assignment and quality control to
-              delivery and analytics—ensuring consistency at any scale.
+              every stage of the data pipelineÃ¢â‚¬"from task assignment and quality control to
+              delivery and analyticsÃ¢â‚¬"ensuring consistency at any scale.
             </p>
             <Link
               href="/contact-us"
@@ -333,7 +333,7 @@ export default function AiServices() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: 8,
-                color: "#F5A623",
+                color: "#FFC370",
                 fontSize: 14,
                 fontWeight: 600,
                 textDecoration: "none",
@@ -343,12 +343,12 @@ export default function AiServices() {
             >
               Learn more
               <svg width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                <path d="M2.5 6H9.5M6.5 3L9.5 6L6.5 9" stroke="#F5A623" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M2.5 6H9.5M6.5 3L9.5 6L6.5 9" stroke="#FFC370" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
           </div>
 
-          {/* Right – stat grid */}
+          {/* Right Ã¢â‚¬" stat grid */}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
             {[
               { value: "50+", label: "Languages supported" },
@@ -357,10 +357,10 @@ export default function AiServices() {
               { value: "30+", label: "Countries operating in" },
             ].map(({ value, label }) => (
               <div key={label}>
-                <div style={{ fontSize: 36, fontWeight: 800, color: "#fff", fontFamily: "Georgia, serif" }}>
+                <div style={{ fontSize: 36, fontWeight: 800, color: "#fff", fontFamily: "Arial, sans-serif" }}>
                   {value}
                 </div>
-                <div style={{ fontSize: 13, color: "#6b7280", marginTop: 4 }}>{label}</div>
+                <div style={{ fontSize: 13, color: "#5B6A5E", marginTop: 4 }}>{label}</div>
               </div>
             ))}
           </div>

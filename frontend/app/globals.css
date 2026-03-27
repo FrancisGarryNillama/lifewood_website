@@ -2,34 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── CSS Variables / Design Tokens ─────────────────────────────────────── */
 :root {
-  /* Brand colors */
-  --color-green:        #2D6A4F;
-  --color-green-light:  #40916C;
-  --color-green-muted:  #f0faf5;
-  --color-amber:        #F5A623;
-  --color-amber-light:  #fbbf24;
-
-  /* Neutrals */
-  --color-bg:           #ffffff;
-  --color-surface:      #f8f9fa;
-  --color-border:       #e5e7eb;
-  --color-text:         #1a1a1a;
-  --color-text-muted:   #6b7280;
-
-  /* Typography */
-  --font-sans:          var(--font-geist), system-ui, sans-serif;
-  --font-serif:         Georgia, 'Times New Roman', serif;
-
-  /* Spacing / layout */
-  --nav-height:         72px;
-  --max-width:          1400px;
-  --section-padding-x:  clamp(1.5rem, 5vw, 5rem);
-  --section-padding-y:  clamp(4rem, 8vw, 8rem);
+  --color-paper: #ffffff;
+  --color-white: #F9F7F7;
+  --color-sea-salt: #FFB347;
+  --color-saffron: #FFC370;
+  --color-castleton-green: #046241;
+  --color-dark-serpent: #133020;
+  --color-earth-yellow: #FFC370;
+  --color-border: rgba(19, 48, 32, 0.16);
+  --color-border-strong: rgba(19, 48, 32, 0.24);
+  --color-text-muted: #5B6A5E;
+  --color-success-bg: rgba(4, 98, 65, 0.12);
+  --color-warning-bg: rgba(255, 195, 112, 0.22);
+  --color-soft-accent: rgba(4, 98, 65, 0.08);
+  --color-soft-saffron: rgba(255, 179, 71, 0.2);
+  --nav-height: 72px;
+  --max-width: 1400px;
+  --section-padding-x: clamp(1.5rem, 5vw, 5rem);
+  --section-padding-y: clamp(4rem, 8vw, 8rem);
 }
 
-/* ── Base resets ────────────────────────────────────────────────────────── */
 *,
 *::before,
 *::after {
@@ -41,43 +34,66 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+body,
+button,
+input,
+textarea,
+select {
+  font-family: Arial, sans-serif;
+}
+
 body {
-  font-family: var(--font-sans);
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-dark-serpent);
   line-height: 1.6;
   min-height: 100dvh;
 }
 
-/* ── Scrollbar (Webkit) ─────────────────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 6px;
+main {
+  background: var(--color-paper);
 }
+
+input,
+textarea,
+select {
+  background: var(--color-white);
+  color: var(--color-dark-serpent);
+  border-color: var(--color-border);
+}
+
+button {
+  color: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 99px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text-muted);
+  background: var(--color-border-strong);
+  border-radius: 999px;
 }
 
-/* ── Focus visible ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-castleton-green);
+}
+
 :focus-visible {
-  outline: 2px solid var(--color-green);
+  outline: 2px solid var(--color-castleton-green);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* ── Selection ──────────────────────────────────────────────────────────── */
 ::selection {
-  background-color: rgba(45, 106, 79, 0.18);
-  color: var(--color-text);
+  background: rgba(255, 195, 112, 0.35);
+  color: var(--color-dark-serpent);
 }
 
-/* ── Utility: section wrapper ───────────────────────────────────────────── */
 .section-wrapper {
   max-width: var(--max-width);
   margin-inline: auto;
@@ -85,7 +101,6 @@ body {
   padding-block: var(--section-padding-y);
 }
 
-/* ── Utility: visually-hidden ───────────────────────────────────────────── */
 .sr-only {
   position: absolute;
   width: 1px;

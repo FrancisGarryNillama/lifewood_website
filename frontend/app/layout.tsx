@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 export const metadata: Metadata = {
   title: {
     template: "%s | Lifewood",
-    default: "Lifewood – The world's leading provider of AI-powered data solutions",
+    default: "Lifewood - The world's leading provider of AI-powered data solutions",
   },
   description:
     "Lifewood delivers AI-powered data solutions across data servicing, LLM training data, and AIGC at global scale.",
@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased bg-white text-gray-900 font-sans">
+      <body>
         <Navbar />
         <main>{children}</main>
         <Footer />

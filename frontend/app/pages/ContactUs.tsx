@@ -21,9 +21,9 @@ const REQUIRED_FIELDS: Array<keyof ContactFormState> = ["firstName", "lastName",
 function TabIndicator() {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 20 }}>
-      <span style={{ width: 20, height: 20, borderRadius: "50%", background: "#1a1a1a", display: "inline-block" }} />
-      <span style={{ width: 20, height: 20, borderRadius: "50%", border: "2px solid #9ca3af", display: "inline-block" }} />
-      <span style={{ display: "inline-block", width: 120, borderTop: "2px dashed #d1d5db", marginLeft: 4 }} />
+      <span style={{ width: 20, height: 20, borderRadius: "50%", background: "#133020", display: "inline-block" }} />
+      <span style={{ width: 20, height: 20, borderRadius: "50%", border: "2px solid #6E7D71", display: "inline-block" }} />
+      <span style={{ display: "inline-block", width: 120, borderTop: "2px dashed rgba(19,48,32,0.2)", marginLeft: 4 }} />
     </div>
   );
 }
@@ -50,14 +50,14 @@ function Field({
   onChange: (name: keyof ContactFormState, value: string) => void;
 }) {
   const [focused, setFocused] = useState(false);
-  const borderColor = error ? "#dc2626" : focused ? "#2D6A4F" : "#e5e7eb";
+  const borderColor = error ? "#dc2626" : focused ? "#046241" : "rgba(19,48,32,0.16)";
 
   const shared = {
     width: "100%",
     border: `1px solid ${borderColor}`,
     borderRadius: 10,
     fontSize: 14,
-    color: "#1a1a1a",
+    color: "#133020",
     background: "#fff",
     outline: "none",
     transition: "border-color 0.2s, box-shadow 0.2s",
@@ -67,8 +67,8 @@ function Field({
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-      <label style={{ fontSize: 13, fontWeight: 600, color: "#374151" }}>
-        {label} {required && <span style={{ color: "#F5A623" }}>*</span>}
+      <label style={{ fontSize: 13, fontWeight: 600, color: "#133020" }}>
+        {label} {required && <span style={{ color: "#FFC370" }}>*</span>}
       </label>
       {rows ? (
         <textarea
@@ -95,7 +95,7 @@ function Field({
           style={{ ...shared, padding: "12px 16px", height: 48 }}
         />
       )}
-      {error ? <span style={{ fontSize: 12, color: "#b91c1c" }}>{error}</span> : null}
+      {error ? <span style={{ fontSize: 12, color: "#133020" }}>{error}</span> : null}
     </div>
   );
 }
@@ -188,12 +188,12 @@ export default function ContactUs() {
         <TabIndicator />
         <h1 style={{
           fontSize: "clamp(2.4rem, 5vw, 4rem)", fontWeight: 800,
-          color: "#1a1a1a", marginBottom: 24, lineHeight: 1.1,
-          fontFamily: "Georgia, serif", letterSpacing: "-0.02em",
+          color: "#133020", marginBottom: 24, lineHeight: 1.1,
+          fontFamily: "Arial, sans-serif", letterSpacing: "-0.02em",
         }}>
           Get In Touch
         </h1>
-        <p style={{ fontSize: 15, color: "#374151", lineHeight: 1.8, maxWidth: 620 }}>
+        <p style={{ fontSize: 15, color: "#133020", lineHeight: 1.8, maxWidth: 620 }}>
           Whether you need a custom dataset, annotation pipeline, or an end-to-end AI data
           solution, our team is ready to help. Reach out and we will respond within one business day.
         </p>
@@ -207,17 +207,17 @@ export default function ContactUs() {
               justifyContent: "center", padding: "60px 0", gap: 16,
             }}>
               <div style={{
-                width: 64, height: 64, borderRadius: "50%", background: "#f0faf5",
+                width: 64, height: 64, borderRadius: "50%", background: "rgba(4,98,65,0.08)",
                 display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 8,
               }}>
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                  <path d="M5 12l5 5L20 7" stroke="#2D6A4F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M5 12l5 5L20 7" stroke="#046241" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
-              <h2 style={{ fontSize: 28, fontWeight: 700, color: "#1a1a1a", fontFamily: "Georgia, serif", margin: 0 }}>
+              <h2 style={{ fontSize: 28, fontWeight: 700, color: "#133020", fontFamily: "Arial, sans-serif", margin: 0 }}>
                 Message sent!
               </h2>
-              <p style={{ fontSize: 15, color: "#6b7280", lineHeight: 1.7, maxWidth: 420, margin: 0 }}>
+              <p style={{ fontSize: 15, color: "#5B6A5E", lineHeight: 1.7, maxWidth: 420, margin: 0 }}>
                 {formMessage || "Thank you for reaching out. A member of our team will get back to you within one business day."}
               </p>
               <button
@@ -227,12 +227,12 @@ export default function ContactUs() {
                 }}
                 style={{
                   marginTop: 8, padding: "10px 24px", borderRadius: 999,
-                  border: "1px solid #e5e7eb", background: "#fff",
+                  border: "1px solid rgba(19,48,32,0.16)", background: "#fff",
                   fontSize: 14, fontWeight: 500, cursor: "pointer",
-                  color: "#374151", transition: "border-color 0.2s",
+                  color: "#133020", transition: "border-color 0.2s",
                 }}
-                onMouseEnter={event => (event.currentTarget.style.borderColor = "#2D6A4F")}
-                onMouseLeave={event => (event.currentTarget.style.borderColor = "#e5e7eb")}
+                onMouseEnter={event => (event.currentTarget.style.borderColor = "#046241")}
+                onMouseLeave={event => (event.currentTarget.style.borderColor = "rgba(19,48,32,0.16)")}
               >
                 Send another message
               </button>
@@ -273,8 +273,8 @@ export default function ContactUs() {
               />
 
               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                <label style={{ fontSize: 13, fontWeight: 600, color: "#374151" }}>
-                  Inquiry Type <span style={{ color: "#F5A623" }}>*</span>
+                <label style={{ fontSize: 13, fontWeight: 600, color: "#133020" }}>
+                  Inquiry Type <span style={{ color: "#FFC370" }}>*</span>
                 </label>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                   {INQUIRY_TYPES.map(type => (
@@ -286,16 +286,16 @@ export default function ContactUs() {
                         padding: "8px 16px", borderRadius: 999, border: "1px solid",
                         fontSize: 13, fontWeight: 500, cursor: "pointer",
                         transition: "all 0.15s",
-                        borderColor: form.inquiryType === type ? "#2D6A4F" : "#e5e7eb",
-                        background: form.inquiryType === type ? "#f0faf5" : "#fff",
-                        color: form.inquiryType === type ? "#2D6A4F" : "#374151",
+                        borderColor: form.inquiryType === type ? "#046241" : "rgba(19,48,32,0.16)",
+                        background: form.inquiryType === type ? "rgba(4,98,65,0.08)" : "#fff",
+                        color: form.inquiryType === type ? "#046241" : "#133020",
                       }}
                     >
                       {type}
                     </button>
                   ))}
                 </div>
-                {errors.inquiryType ? <span style={{ fontSize: 12, color: "#b91c1c" }}>{errors.inquiryType}</span> : null}
+                {errors.inquiryType ? <span style={{ fontSize: 12, color: "#133020" }}>{errors.inquiryType}</span> : null}
               </div>
 
               <Field
@@ -309,7 +309,7 @@ export default function ContactUs() {
               />
 
               {formMessage && status === "error" ? (
-                <div style={{ background: "#fef2f2", border: "1px solid #fecaca", borderRadius: 10, padding: "12px 14px", fontSize: 13, color: "#b91c1c" }}>
+                <div style={{ background: "rgba(19,48,32,0.1)", border: "1px solid rgba(19,48,32,0.2)", borderRadius: 10, padding: "12px 14px", fontSize: 13, color: "#133020" }}>
                   {formMessage}
                 </div>
               ) : null}
@@ -319,17 +319,17 @@ export default function ContactUs() {
                 disabled={status === "submitting"}
                 style={{
                   display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 10,
-                  background: status === "submitting" ? "#9ca3af" : "#F5A623", color: "#fff",
+                  background: status === "submitting" ? "#6E7D71" : "#FFC370", color: "#fff",
                   padding: "14px 32px", borderRadius: 999,
                   fontSize: 15, fontWeight: 600, border: "none", cursor: status === "submitting" ? "not-allowed" : "pointer",
                   alignSelf: "flex-start",
                   transition: "background 0.2s",
                 }}
                 onMouseEnter={event => {
-                  if (status !== "submitting") event.currentTarget.style.background = "#e09610";
+                  if (status !== "submitting") event.currentTarget.style.background = "#FFB347";
                 }}
                 onMouseLeave={event => {
-                  if (status !== "submitting") event.currentTarget.style.background = "#F5A623";
+                  if (status !== "submitting") event.currentTarget.style.background = "#FFC370";
                 }}
               >
                 {status === "submitting" ? "Sending..." : "Send Message"}
@@ -343,8 +343,8 @@ export default function ContactUs() {
           )}
 
           <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
-            <div style={{ background: "#f8f9fa", borderRadius: 20, padding: "36px 32px" }}>
-              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#F5A623", textTransform: "uppercase", marginBottom: 20 }}>
+            <div style={{ background: "#F9F7F7", borderRadius: 20, padding: "36px 32px" }}>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#FFC370", textTransform: "uppercase", marginBottom: 20 }}>
                 Quick Contact
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
@@ -354,18 +354,18 @@ export default function ContactUs() {
                   { label: "LinkedIn", value: "Lifewood Data Technology Ltd.", icon: "Social" },
                 ].map(({ label, value, icon }) => (
                   <div key={label} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
-                    <span style={{ fontSize: 12, fontWeight: 700, lineHeight: 1.2, color: "#F5A623", minWidth: 54 }}>{icon}</span>
+                    <span style={{ fontSize: 12, fontWeight: 700, lineHeight: 1.2, color: "#FFC370", minWidth: 54 }}>{icon}</span>
                     <div>
-                      <div style={{ fontSize: 11, fontWeight: 700, color: "#9ca3af", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 2 }}>{label}</div>
-                      <div style={{ fontSize: 14, color: "#374151", fontWeight: 500 }}>{value}</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: "#6E7D71", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 2 }}>{label}</div>
+                      <div style={{ fontSize: 14, color: "#133020", fontWeight: 500 }}>{value}</div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div style={{ background: "#111827", borderRadius: 20, padding: "36px 32px" }}>
-              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#F5A623", textTransform: "uppercase", marginBottom: 20 }}>
+            <div style={{ background: "#046241", borderRadius: 20, padding: "36px 32px" }}>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#FFC370", textTransform: "uppercase", marginBottom: 20 }}>
                 What Happens Next
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -376,20 +376,20 @@ export default function ContactUs() {
                 ].map(({ step, text }) => (
                   <div key={step} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
                     <span style={{
-                      fontSize: 11, fontWeight: 700, color: "#F5A623",
+                      fontSize: 11, fontWeight: 700, color: "#FFC370",
                       background: "rgba(245,166,35,0.12)", padding: "4px 8px",
                       borderRadius: 6, flexShrink: 0, letterSpacing: "0.05em",
                     }}>
                       {step}
                     </span>
-                    <span style={{ fontSize: 14, color: "#9ca3af", lineHeight: 1.6 }}>{text}</span>
+                    <span style={{ fontSize: 14, color: "#6E7D71", lineHeight: 1.6 }}>{text}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             <div>
-              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", color: "#9ca3af", textTransform: "uppercase", marginBottom: 16 }}>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", color: "#6E7D71", textTransform: "uppercase", marginBottom: 16 }}>
                 Find Us On
               </p>
               <div style={{ display: "flex", gap: 10 }}>
@@ -400,12 +400,12 @@ export default function ContactUs() {
                   { label: "YouTube", href: "https://www.youtube.com/@LifewoodDataTechnology" },
                 ].map(({ label, href }) => (
                   <a key={label} href={href} target="_blank" rel="noopener noreferrer" style={{
-                    padding: "8px 14px", borderRadius: 8, border: "1px solid #e5e7eb",
-                    fontSize: 12, fontWeight: 600, color: "#374151",
+                    padding: "8px 14px", borderRadius: 8, border: "1px solid rgba(19,48,32,0.16)",
+                    fontSize: 12, fontWeight: 600, color: "#133020",
                     textDecoration: "none", transition: "all 0.15s",
                   }}
-                    onMouseEnter={event => { event.currentTarget.style.borderColor = "#2D6A4F"; event.currentTarget.style.color = "#2D6A4F"; }}
-                    onMouseLeave={event => { event.currentTarget.style.borderColor = "#e5e7eb"; event.currentTarget.style.color = "#374151"; }}
+                    onMouseEnter={event => { event.currentTarget.style.borderColor = "#046241"; event.currentTarget.style.color = "#046241"; }}
+                    onMouseLeave={event => { event.currentTarget.style.borderColor = "rgba(19,48,32,0.16)"; event.currentTarget.style.color = "#133020"; }}
                   >
                     {label}
                   </a>

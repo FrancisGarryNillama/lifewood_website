@@ -1,5 +1,5 @@
 Django==6.0.3
 django-cors-headers==4.9.0
-gunicorn>=22,<24
+gunicorn>=22,<24; platform_system != "Windows"
 psycopg[binary]>=3.1,<4
 whitenoise>=6.8,<7

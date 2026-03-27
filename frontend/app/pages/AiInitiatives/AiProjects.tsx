@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { AnimatedYouTubeEmbed } from "@/app/components/animated/AnimatedPrimitives";
 
-// ── Data ──────────────────────────────────────────────────────────────────────
+// ï¿½"ï¿½ï¿½"ï¿½ Data ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
 const PROJECTS = [
   {
     tag: "Data Collection",
@@ -45,7 +45,7 @@ const PROJECTS = [
     tag: "Platform",
     title: "LiFT Workforce Management Platform",
     description:
-      "Industrializing data annotation workflows through our proprietary platform—enabling quality control, task routing, and delivery at scale.",
+      "Industrializing data annotation workflows through our proprietary platform, enabling quality control, task routing, and delivery at scale.",
     region: "Global",
     status: "Active",
   },
@@ -60,22 +60,22 @@ const PROJECTS = [
 ];
 
 const STATUS_COLORS: Record<string, { bg: string; text: string }> = {
-  Active:   { bg: "#f0faf5", text: "#2D6A4F" },
-  Ongoing:  { bg: "#fff7ed", text: "#c2410c" },
+  Active:   { bg: "rgba(4,98,65,0.08)", text: "#046241" },
+  Ongoing:  { bg: "rgba(255,179,71,0.2)", text: "#133020" },
 };
 
-// ── Shared: Tab Indicator ─────────────────────────────────────────────────────
+// ï¿½"ï¿½ï¿½"ï¿½ Shared: Tab Indicator ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
 function TabIndicator() {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 20 }}>
-      <span style={{ width: 20, height: 20, borderRadius: "50%", background: "#1a1a1a", display: "inline-block" }} />
-      <span style={{ width: 20, height: 20, borderRadius: "50%", border: "2px solid #9ca3af", display: "inline-block" }} />
-      <span style={{ display: "inline-block", width: 120, borderTop: "2px dashed #d1d5db", marginLeft: 4 }} />
+      <span style={{ width: 20, height: 20, borderRadius: "50%", background: "#133020", display: "inline-block" }} />
+      <span style={{ width: 20, height: 20, borderRadius: "50%", border: "2px solid #6E7D71", display: "inline-block" }} />
+      <span style={{ display: "inline-block", width: 120, borderTop: "2px dashed rgba(19,48,32,0.2)", marginLeft: 4 }} />
     </div>
   );
 }
 
-// ── Project Card ──────────────────────────────────────────────────────────────
+// ï¿½"ï¿½ï¿½"ï¿½ Project Card ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
 function ProjectCard({
   tag, title, description, region, status,
 }: (typeof PROJECTS)[0]) {
@@ -87,8 +87,8 @@ function ProjectCard({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: hovered ? "#fafafa" : "#fff",
-        border: `1px solid ${hovered ? "#d1d5db" : "#e5e7eb"}`,
+        background: hovered ? "#F9F7F7" : "#fff",
+        border: `1px solid ${hovered ? "rgba(19,48,32,0.2)" : "rgba(19,48,32,0.16)"}`,
         borderRadius: 16,
         padding: "32px 28px",
         display: "flex",
@@ -106,8 +106,8 @@ function ProjectCard({
           fontWeight: 700,
           letterSpacing: "0.12em",
           textTransform: "uppercase",
-          color: "#F5A623",
-          background: "#fff7ed",
+          color: "#FFC370",
+          background: "rgba(255,179,71,0.2)",
           padding: "4px 10px",
           borderRadius: 999,
         }}>
@@ -129,34 +129,34 @@ function ProjectCard({
       <h3 style={{
         fontSize: 18,
         fontWeight: 700,
-        color: "#1a1a1a",
+        color: "#133020",
         lineHeight: 1.3,
         margin: 0,
-        fontFamily: "Georgia, serif",
+        fontFamily: "Arial, sans-serif",
         transition: "color 0.2s",
-        ...(hovered ? { color: "#2D6A4F" } : {}),
+        ...(hovered ? { color: "#046241" } : {}),
       }}>
         {title}
       </h3>
 
       {/* Description */}
-      <p style={{ fontSize: 14, color: "#6b7280", lineHeight: 1.7, margin: 0 }}>
+      <p style={{ fontSize: 14, color: "#5B6A5E", lineHeight: 1.7, margin: 0 }}>
         {description}
       </p>
 
       {/* Region */}
       <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: "auto", paddingTop: 8 }}>
         <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <circle cx="7" cy="7" r="6" stroke="#9ca3af" strokeWidth="1.2" />
-          <path d="M1 7h12M7 1c-2 2-3 4-3 6s1 4 3 6M7 1c2 2 3 4 3 6s-1 4-3 6" stroke="#9ca3af" strokeWidth="1.2" />
+          <circle cx="7" cy="7" r="6" stroke="#6E7D71" strokeWidth="1.2" />
+          <path d="M1 7h12M7 1c-2 2-3 4-3 6s1 4 3 6M7 1c2 2 3 4 3 6s-1 4-3 6" stroke="#6E7D71" strokeWidth="1.2" />
         </svg>
-        <span style={{ fontSize: 12, color: "#9ca3af", fontWeight: 500 }}>{region}</span>
+        <span style={{ fontSize: 12, color: "#6E7D71", fontWeight: 500 }}>{region}</span>
       </div>
     </div>
   );
 }
 
-// ── Main Page ─────────────────────────────────────────────────────────────────
+// ï¿½"ï¿½ï¿½"ï¿½ Main Page ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
 export default function AiProjects() {
   const spotlightRef = useRef<HTMLDivElement | null>(null);
 
@@ -186,17 +186,17 @@ export default function AiProjects() {
   return (
     <div style={{ background: "#fff", minHeight: "100vh" }}>
 
-      {/* ── Hero / Intro ─────────────────────────────────────────────────── */}
+      {/* ï¿½"ï¿½ï¿½"ï¿½ Hero / Intro ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */}
       <section style={{ maxWidth: 1400, margin: "0 auto", padding: "72px 80px 60px" }}>
         <TabIndicator />
 
         <h1 style={{
           fontSize: "clamp(2.4rem, 5vw, 4rem)",
           fontWeight: 800,
-          color: "#1a1a1a",
+          color: "#133020",
           marginBottom: 28,
           lineHeight: 1.1,
-          fontFamily: "Georgia, serif",
+          fontFamily: "Arial, sans-serif",
           letterSpacing: "-0.02em",
         }}>
           AI Projects
@@ -204,7 +204,7 @@ export default function AiProjects() {
 
         <p style={{
           fontSize: 15,
-          color: "#374151",
+          color: "#133020",
           lineHeight: 1.75,
           maxWidth: 900,
           marginBottom: 36,
@@ -222,7 +222,7 @@ export default function AiProjects() {
             display: "inline-flex",
             alignItems: "center",
             gap: 10,
-            background: "#F5A623",
+            background: "#FFC370",
             color: "#fff",
             padding: "12px 24px",
             borderRadius: 999,
@@ -231,13 +231,13 @@ export default function AiProjects() {
             textDecoration: "none",
             transition: "background 0.2s",
           }}
-          onMouseEnter={e => (e.currentTarget.style.background = "#e09610")}
-          onMouseLeave={e => (e.currentTarget.style.background = "#F5A623")}
+          onMouseEnter={e => (e.currentTarget.style.background = "#FFB347")}
+          onMouseLeave={e => (e.currentTarget.style.background = "#FFC370")}
         >
           Contact Us
           <span style={{
             display: "inline-flex", alignItems: "center", justifyContent: "center",
-            width: 28, height: 28, borderRadius: "50%", background: "#2D6A4F", flexShrink: 0,
+            width: 28, height: 28, borderRadius: "50%", background: "#046241", flexShrink: 0,
           }}>
             <svg width="13" height="13" viewBox="0 0 12 12" fill="none" aria-hidden="true">
               <path d="M2.5 6H9.5M6.5 3L9.5 6L6.5 9" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -249,7 +249,7 @@ export default function AiProjects() {
       <section
         ref={spotlightRef}
         style={{
-          background: "linear-gradient(180deg, #111827 0%, #0f172a 100%)",
+          background: "linear-gradient(180deg, #046241 0%, #0f172a 100%)",
           backgroundSize: "100% 200%",
           padding: "0 0 80px",
         }}
@@ -260,13 +260,13 @@ export default function AiProjects() {
             title="Lifewood AI projects video"
             caption={
               <div style={{ padding: "28px 28px 20px" }}>
-                <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#F5A623", textTransform: "uppercase", marginBottom: 12 }}>
+                <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#FFC370", textTransform: "uppercase", marginBottom: 12 }}>
                   Project Spotlight
                 </p>
-                <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 700, color: "#fff", fontFamily: "Georgia, serif", lineHeight: 1.2, margin: "0 0 10px" }}>
+                <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 700, color: "#fff", fontFamily: "Arial, sans-serif", lineHeight: 1.2, margin: "0 0 10px" }}>
                   See how Lifewood delivers AI data services at scale
                 </h2>
-                <p style={{ fontSize: 14, color: "#9ca3af", lineHeight: 1.75, margin: 0, maxWidth: 760 }}>
+                <p style={{ fontSize: 14, color: "#6E7D71", lineHeight: 1.75, margin: 0, maxWidth: 760 }}>
                   This featured video sits ahead of the project grid in the same broad, high-impact format used across Lifewood&apos;s AI service storytelling.
                 </p>
               </div>
@@ -275,14 +275,14 @@ export default function AiProjects() {
         </div>
       </section>
 
-      {/* ── Projects Section ─────────────────────────────────────────────── */}
+      {/* ï¿½"ï¿½ï¿½"ï¿½ Projects Section ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */}
       <section style={{ maxWidth: 1400, margin: "0 auto", padding: "0 80px 100px" }}>
 
         {/* Section label + heading */}
         <div style={{ textAlign: "center", marginBottom: 56 }}>
           <span style={{
             display: "inline-block",
-            background: "#1a1a1a",
+            background: "#133020",
             color: "#fff",
             fontSize: 13,
             fontWeight: 600,
@@ -296,9 +296,9 @@ export default function AiProjects() {
           <h2 style={{
             fontSize: "clamp(2rem, 4vw, 3.2rem)",
             fontWeight: 700,
-            color: "#1a1a1a",
+            color: "#133020",
             lineHeight: 1.15,
-            fontFamily: "Georgia, serif",
+            fontFamily: "Arial, sans-serif",
             letterSpacing: "-0.02em",
             margin: 0,
           }}>
@@ -318,9 +318,9 @@ export default function AiProjects() {
         </div>
       </section>
 
-      {/* ── CTA Banner ───────────────────────────────────────────────────── */}
+      {/* ï¿½"ï¿½ï¿½"ï¿½ CTA Banner ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */}
       <section style={{
-        background: "#111827",
+        background: "#046241",
         maxWidth: "calc(1400px - 160px)",
         margin: "0 auto 80px",
         borderRadius: 20,
@@ -334,7 +334,7 @@ export default function AiProjects() {
         <div style={{ maxWidth: 560 }}>
           <p style={{
             fontSize: 12, fontWeight: 700, letterSpacing: "0.15em",
-            color: "#F5A623", textTransform: "uppercase", marginBottom: 16,
+            color: "#FFC370", textTransform: "uppercase", marginBottom: 16,
           }}>
             Work With Us
           </p>
@@ -343,12 +343,12 @@ export default function AiProjects() {
             fontWeight: 700,
             color: "#fff",
             lineHeight: 1.2,
-            fontFamily: "Georgia, serif",
+            fontFamily: "Arial, sans-serif",
             marginBottom: 16,
           }}>
             Have a project in mind?
           </h2>
-          <p style={{ fontSize: 15, color: "#9ca3af", lineHeight: 1.75, margin: 0 }}>
+          <p style={{ fontSize: 15, color: "#6E7D71", lineHeight: 1.75, margin: 0 }}>
             Whether you need a custom dataset, annotation pipeline, or an end-to-end
             AI data solution, our team is ready to help you scale.
           </p>
@@ -358,13 +358,13 @@ export default function AiProjects() {
           href="/contact-us"
           style={{
             display: "inline-flex", alignItems: "center", gap: 10,
-            background: "#F5A623", color: "#fff",
+            background: "#FFC370", color: "#fff",
             padding: "14px 28px", borderRadius: 999,
             fontSize: 15, fontWeight: 600, textDecoration: "none",
             flexShrink: 0, transition: "background 0.2s",
           }}
-          onMouseEnter={e => (e.currentTarget.style.background = "#e09610")}
-          onMouseLeave={e => (e.currentTarget.style.background = "#F5A623")}
+          onMouseEnter={e => (e.currentTarget.style.background = "#FFB347")}
+          onMouseLeave={e => (e.currentTarget.style.background = "#FFC370")}
         >
           Get in touch
           <svg width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -376,3 +376,4 @@ export default function AiProjects() {
     </div>
   );
 } 
+

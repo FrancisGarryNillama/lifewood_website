@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { getApiBaseUrl } from "@/app/lib/api";
 import { AnimatedImageCard } from "@/app/components/animated/AnimatedPrimitives";
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
+// ï¿½"ï¿½ï¿½"ï¿½ Helpers ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -29,7 +29,7 @@ const API_BASE_URL = getApiBaseUrl();
 
 type AdminStatus = "idle" | "unlocking" | "ready" | "submitting" | "success" | "error";
 
-// ── 1. Hero ───────────────────────────────────────────────────────────────────
+// ï¿½"ï¿½ï¿½"ï¿½ 1. Hero ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
 function HeroSection() {
   return (
     <section
@@ -65,8 +65,8 @@ function HeroSection() {
             fontWeight: 800,
             lineHeight: 1.08,
             letterSpacing: "-0.03em",
-            color: "#1a1a1a",
-            fontFamily: "Georgia, serif",
+            color: "#133020",
+            fontFamily: "Arial, sans-serif",
             marginBottom: 40,
           }}
         >
@@ -79,7 +79,7 @@ function HeroSection() {
           href="/contact-us"
           style={{
             display: "inline-flex", alignItems: "center", gap: 10,
-            background: "#fff", color: "#1a1a1a",
+            background: "#fff", color: "#133020",
             padding: "14px 28px", borderRadius: 999,
             fontSize: 15, fontWeight: 500, textDecoration: "none",
             boxShadow: "0 2px 12px rgba(0,0,0,0.10)",
@@ -92,7 +92,7 @@ function HeroSection() {
           Contact Us
           <span style={{
             display: "inline-flex", alignItems: "center", justifyContent: "center",
-            width: 26, height: 26, borderRadius: "50%", background: "#1a1a1a",
+            width: 26, height: 26, borderRadius: "50%", background: "#133020",
             transition: "background 0.2s",
           }}>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -115,7 +115,7 @@ function HeroSection() {
   );
 }
 
-// ── 2. About Strip ────────────────────────────────────────────────────────────
+// ï¿½"ï¿½ï¿½"ï¿½ 2. About Strip ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
 function AboutSection() {
   const { ref, visible } = useInView();
   return (
@@ -126,35 +126,35 @@ function AboutSection() {
       transition: "opacity 0.7s ease, transform 0.7s ease",
     }}>
       <div>
-        <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#F5A623", textTransform: "uppercase", marginBottom: 20 }}>
+        <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#FFC370", textTransform: "uppercase", marginBottom: 20 }}>
           About Us
         </p>
         <h2 style={{
           fontSize: "clamp(1.8rem, 3.5vw, 3rem)", fontWeight: 700,
-          color: "#1a1a1a", lineHeight: 1.2,
-          fontFamily: "Georgia, serif", letterSpacing: "-0.02em", marginBottom: 24,
+          color: "#133020", lineHeight: 1.2,
+          fontFamily: "Arial, sans-serif", letterSpacing: "-0.02em", marginBottom: 24,
         }}>
           Bringing big data to life for the good of humankind
         </h2>
-        <p style={{ fontSize: 15, color: "#374151", lineHeight: 1.8, marginBottom: 16 }}>
+        <p style={{ fontSize: 15, color: "#133020", lineHeight: 1.8, marginBottom: 16 }}>
           At <strong>Lifewood</strong> we empower our company and our clients to realize the
           transformative power of AI: bringing big data to life, launching new ways of thinking,
           learning and doing; for the good of humankind.
         </p>
-        <p style={{ fontSize: 15, color: "#6b7280", lineHeight: 1.8, marginBottom: 36 }}>
+        <p style={{ fontSize: 15, color: "#5B6A5E", lineHeight: 1.8, marginBottom: 36 }}>
           By connecting local expertise with our global AI data infrastructure, we create
           opportunities, empower communities, and drive inclusive growth worldwide.
         </p>
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
           <Link href="/our-company/about-us" style={{
             display: "inline-flex", alignItems: "center", gap: 8,
-            background: "#1a1a1a", color: "#fff",
+            background: "#133020", color: "#fff",
             padding: "12px 24px", borderRadius: 999,
             fontSize: 14, fontWeight: 600, textDecoration: "none",
             transition: "background 0.2s",
           }}
-            onMouseEnter={e => (e.currentTarget.style.background = "#2D6A4F")}
-            onMouseLeave={e => (e.currentTarget.style.background = "#1a1a1a")}
+            onMouseEnter={e => (e.currentTarget.style.background = "#046241")}
+            onMouseLeave={e => (e.currentTarget.style.background = "#133020")}
           >
             Know Us Better
             <svg width="13" height="13" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -163,13 +163,13 @@ function AboutSection() {
           </Link>
           <Link href="/ai-initiatives/ai-projects" style={{
             display: "inline-flex", alignItems: "center", gap: 8,
-            border: "1px solid #e5e7eb", color: "#374151",
+            border: "1px solid rgba(19,48,32,0.16)", color: "#133020",
             padding: "12px 24px", borderRadius: 999,
             fontSize: 14, fontWeight: 600, textDecoration: "none",
             transition: "all 0.2s",
           }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = "#2D6A4F"; e.currentTarget.style.color = "#2D6A4F"; }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = "#e5e7eb"; e.currentTarget.style.color = "#374151"; }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = "#046241"; e.currentTarget.style.color = "#046241"; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(19,48,32,0.16)"; e.currentTarget.style.color = "#133020"; }}
           >
             Explore More
           </Link>
@@ -187,17 +187,17 @@ function AboutSection() {
             <div key={label} style={{
               display: "flex", alignItems: "center", gap: 20,
               padding: "20px 24px", borderRadius: 14,
-              border: "1px solid #e5e7eb", background: "#fafafa",
+              border: "1px solid rgba(19,48,32,0.16)", background: "#F9F7F7",
               transition: "all 0.2s",
             }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "#2D6A4F"; (e.currentTarget as HTMLElement).style.background = "#f0faf5"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "#e5e7eb"; (e.currentTarget as HTMLElement).style.background = "#fafafa"; }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "#046241"; (e.currentTarget as HTMLElement).style.background = "rgba(4,98,65,0.08)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(19,48,32,0.16)"; (e.currentTarget as HTMLElement).style.background = "#F9F7F7"; }}
             >
-              <span style={{ fontSize: 28, fontWeight: 800, color: "#1a1a1a", fontFamily: "Georgia, serif", minWidth: 80 }}>{value}</span>
-              <span style={{ fontSize: 14, color: "#6b7280", lineHeight: 1.4 }}>{label}</span>
+              <span style={{ fontSize: 28, fontWeight: 800, color: "#133020", fontFamily: "Arial, sans-serif", minWidth: 80 }}>{value}</span>
+              <span style={{ fontSize: 14, color: "#5B6A5E", lineHeight: 1.4 }}>{label}</span>
               {href && (
                 <svg style={{ marginLeft: "auto", flexShrink: 0 }} width="14" height="14" viewBox="0 0 12 12" fill="none">
-                  <path d="M2.5 6H9.5M6.5 3L9.5 6L6.5 9" stroke="#9ca3af" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M2.5 6H9.5M6.5 3L9.5 6L6.5 9" stroke="#6E7D71" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               )}
             </div>
@@ -209,14 +209,14 @@ function AboutSection() {
   );
 }
 
-// ── 3. Services Preview ───────────────────────────────────────────────────────
+// ï¿½"ï¿½ï¿½"ï¿½ 3. Services Preview ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
 const SERVICE_ITEMS = [
-  { cat: "Audio", desc: "Collection, labelling, voice categorization, music categorization, intelligent cs", icon: "🎙" },
-  { cat: "Image", desc: "Collection, labelling, classification, audit, object detection and tagging", icon: "🖼" },
-  { cat: "Video", desc: "Collection, labelling, audit, live broadcast, subtitle generation", icon: "🎬" },
-  { cat: "Text", desc: "Text collection, labelling, transcription, utterance collection, sentiment analysis", icon: "📝" },
-  { cat: "3D & AR", desc: "3D model annotation, augmented reality asset labelling, depth perception tagging", icon: "🧊" },
-  { cat: "Multimodal", desc: "Cross-modal alignment, vision-language pairing, instruction-tuning datasets", icon: "⚡" },
+  { cat: "Audio", desc: "Collection, labelling, voice categorization, music categorization, intelligent cs", icon: "AU" },
+  { cat: "Image", desc: "Collection, labelling, classification, audit, object detection and tagging", icon: "IM" },
+  { cat: "Video", desc: "Collection, labelling, audit, live broadcast, subtitle generation", icon: "VI" },
+  { cat: "Text", desc: "Text collection, labelling, transcription, utterance collection, sentiment analysis", icon: "TX" },
+  { cat: "3D & AR", desc: "3D model annotation, augmented reality asset labelling, depth perception tagging", icon: "3D" },
+  { cat: "Multimodal", desc: "Cross-modal alignment, vision-language pairing, instruction-tuning datasets", icon: "MM" },
 ];
 
 function ServicesSection() {
@@ -224,7 +224,7 @@ function ServicesSection() {
   const [active, setActive] = useState(0);
 
   return (
-    <section style={{ background: "#111827", padding: "100px 0" }}>
+    <section style={{ background: "#046241", padding: "100px 0" }}>
       <div ref={ref} style={{
         maxWidth: 1400, margin: "0 auto", padding: "0 80px",
         opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(24px)",
@@ -233,29 +233,29 @@ function ServicesSection() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 80, alignItems: "start" }}>
           {/* Left */}
           <div>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#F5A623", textTransform: "uppercase", marginBottom: 20 }}>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#FFC370", textTransform: "uppercase", marginBottom: 20 }}>
               What We Do
             </p>
             <h2 style={{
               fontSize: "clamp(2rem, 4vw, 3.2rem)", fontWeight: 700,
               color: "#fff", lineHeight: 1.15,
-              fontFamily: "Georgia, serif", letterSpacing: "-0.02em", marginBottom: 24,
+              fontFamily: "Arial, sans-serif", letterSpacing: "-0.02em", marginBottom: 24,
             }}>
               AI DATA SERVICES
             </h2>
-            <p style={{ fontSize: 15, color: "#9ca3af", lineHeight: 1.8, marginBottom: 36 }}>
+            <p style={{ fontSize: 15, color: "#6E7D71", lineHeight: 1.8, marginBottom: 36 }}>
               Lifewood offers AI and IT services that enhance decision-making, reduce costs,
               and improve productivity to optimize organizational performance.
             </p>
             <Link href="/ai-initiatives/ai-services" style={{
               display: "inline-flex", alignItems: "center", gap: 8,
-              background: "#F5A623", color: "#fff",
+              background: "#FFC370", color: "#fff",
               padding: "12px 24px", borderRadius: 999,
               fontSize: 14, fontWeight: 600, textDecoration: "none",
               transition: "background 0.2s",
             }}
-              onMouseEnter={e => (e.currentTarget.style.background = "#e09610")}
-              onMouseLeave={e => (e.currentTarget.style.background = "#F5A623")}
+              onMouseEnter={e => (e.currentTarget.style.background = "#FFB347")}
+              onMouseLeave={e => (e.currentTarget.style.background = "#FFC370")}
             >
               View All Services
               <svg width="13" height="13" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -285,12 +285,12 @@ function ServicesSection() {
                 <div>
                   <h3 style={{
                     fontSize: 16, fontWeight: 700,
-                    color: active === i ? "#F5A623" : "#fff",
-                    fontFamily: "Georgia, serif", marginBottom: 6,
+                    color: active === i ? "#FFC370" : "#fff",
+                    fontFamily: "Arial, sans-serif", marginBottom: 6,
                     transition: "color 0.2s",
                   }}>{s.cat}</h3>
                   <p style={{
-                    fontSize: 13, color: "#6b7280", lineHeight: 1.6, margin: 0,
+                    fontSize: 13, color: "#5B6A5E", lineHeight: 1.6, margin: 0,
                     maxHeight: active === i ? 80 : 0,
                     overflow: "hidden",
                     transition: "max-height 0.3s ease, opacity 0.3s ease",
@@ -306,7 +306,7 @@ function ServicesSection() {
   );
 }
 
-// ── 4. Stats Banner ───────────────────────────────────────────────────────────
+// ï¿½"ï¿½ï¿½"ï¿½ 4. Stats Banner ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
 function StatsBanner() {
   const { ref, visible } = useInView();
   return (
@@ -315,13 +315,13 @@ function StatsBanner() {
       opacity: visible ? 1 : 0, transition: "opacity 0.8s ease",
     }}>
       <div style={{ textAlign: "center", marginBottom: 64 }}>
-        <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#F5A623", textTransform: "uppercase", marginBottom: 16 }}>
+        <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#FFC370", textTransform: "uppercase", marginBottom: 16 }}>
           Constant Innovation: Unlimited Possibilities
         </p>
         <h2 style={{
           fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", fontWeight: 700,
-          color: "#1a1a1a", lineHeight: 1.2,
-          fontFamily: "Georgia, serif",
+          color: "#133020", lineHeight: 1.2,
+          fontFamily: "Arial, sans-serif",
         }}>
           Global AI Data Projects at Scale
         </h2>
@@ -354,7 +354,7 @@ function StatsBanner() {
                   background: "linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.72) 100%)",
                 }}
               >
-                <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", color: "#FDE68A", textTransform: "uppercase" }}>
+                <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", color: "#FFC370", textTransform: "uppercase" }}>
                   Innovation In Motion
                 </span>
               </div>
@@ -365,21 +365,21 @@ function StatsBanner() {
       <div style={{
         display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
         gap: 2, borderRadius: 20, overflow: "hidden",
-        border: "1px solid #e5e7eb",
+        border: "1px solid rgba(19,48,32,0.16)",
       }}>
         {[
-          { value: "40+", label: "Global Delivery Centers", color: "#2D6A4F" },
-          { value: "30+", label: "Countries Worldwide", color: "#F5A623" },
-          { value: "50+", label: "Languages & Dialects", color: "#2D6A4F" },
-          { value: "56K+", label: "Online Resources", color: "#F5A623" },
+          { value: "40+", label: "Global Delivery Centers", color: "#046241" },
+          { value: "30+", label: "Countries Worldwide", color: "#FFC370" },
+          { value: "50+", label: "Languages & Dialects", color: "#046241" },
+          { value: "56K+", label: "Online Resources", color: "#FFC370" },
         ].map(({ value, label, color }, i) => (
           <div key={label} style={{
-            padding: "48px 32px", background: i % 2 === 0 ? "#fff" : "#fafafa",
+            padding: "48px 32px", background: i % 2 === 0 ? "#fff" : "#F9F7F7",
             textAlign: "center",
-            borderRight: i < 3 ? "1px solid #e5e7eb" : "none",
+            borderRight: i < 3 ? "1px solid rgba(19,48,32,0.16)" : "none",
           }}>
-            <div style={{ fontSize: 48, fontWeight: 800, color, fontFamily: "Georgia, serif", marginBottom: 8 }}>{value}</div>
-            <div style={{ fontSize: 14, color: "#6b7280", lineHeight: 1.5 }}>{label}</div>
+            <div style={{ fontSize: 48, fontWeight: 800, color, fontFamily: "Arial, sans-serif", marginBottom: 8 }}>{value}</div>
+            <div style={{ fontSize: 14, color: "#5B6A5E", lineHeight: 1.5 }}>{label}</div>
           </div>
         ))}
       </div>
@@ -387,25 +387,25 @@ function StatsBanner() {
   );
 }
 
-// ── 5. Clients ────────────────────────────────────────────────────────────────
+// ï¿½"ï¿½ï¿½"ï¿½ 5. Clients ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
 const CLIENT_NAMES = ["Microsoft", "Google", "Amazon", "Meta", "Apple", "NVIDIA", "Samsung", "Alibaba", "Baidu", "ByteDance", "OpenAI", "Anthropic"];
 
 function ClientsSection() {
   const { ref, visible } = useInView();
   return (
-    <section style={{ background: "#f8f9fa", padding: "80px 0", overflow: "hidden" }}>
+    <section style={{ background: "#F9F7F7", padding: "80px 0", overflow: "hidden" }}>
       <div ref={ref} style={{
         maxWidth: 1400, margin: "0 auto", padding: "0 80px 48px",
         opacity: visible ? 1 : 0, transition: "opacity 0.7s ease",
       }}>
         <h2 style={{
           fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 700,
-          color: "#1a1a1a", lineHeight: 1.2,
-          fontFamily: "Georgia, serif", textAlign: "center", marginBottom: 16,
+          color: "#133020", lineHeight: 1.2,
+          fontFamily: "Arial, sans-serif", textAlign: "center", marginBottom: 16,
         }}>
           Our Clients And Partners
         </h2>
-        <p style={{ fontSize: 15, color: "#6b7280", textAlign: "center", maxWidth: 640, margin: "0 auto 48px", lineHeight: 1.7 }}>
+        <p style={{ fontSize: 15, color: "#5B6A5E", textAlign: "center", maxWidth: 640, margin: "0 auto 48px", lineHeight: 1.7 }}>
           We are proud to partner and work with leading organizations worldwide in transforming
           data into meaningful solutions.
         </p>
@@ -420,9 +420,9 @@ function ClientsSection() {
             <div key={i} style={{
               flexShrink: 0, padding: "16px 40px",
               display: "flex", alignItems: "center", justifyContent: "center",
-              borderRight: "1px solid #e5e7eb",
+              borderRight: "1px solid rgba(19,48,32,0.16)",
             }}>
-              <span style={{ fontSize: 15, fontWeight: 600, color: "#9ca3af", letterSpacing: "0.02em", whiteSpace: "nowrap" }}>{name}</span>
+              <span style={{ fontSize: 15, fontWeight: 600, color: "#6E7D71", letterSpacing: "0.02em", whiteSpace: "nowrap" }}>{name}</span>
             </div>
           ))}
         </div>
@@ -432,29 +432,29 @@ function ClientsSection() {
   );
 }
 
-// ── 6. Final CTA ──────────────────────────────────────────────────────────────
+// ï¿½"ï¿½ï¿½"ï¿½ 6. Final CTA ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
 function CtaSection() {
   const { ref, visible } = useInView();
   return (
     <section style={{ maxWidth: 1400, margin: "0 auto", padding: "80px 80px 100px" }}>
       <div ref={ref} style={{
-        background: "#111827", borderRadius: 24, padding: "80px",
+        background: "#046241", borderRadius: 24, padding: "80px",
         display: "grid", gridTemplateColumns: "1fr auto", gap: 60, alignItems: "center",
         opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(24px)",
         transition: "opacity 0.7s ease, transform 0.7s ease",
       }}>
         <div>
-          <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#F5A623", textTransform: "uppercase", marginBottom: 20 }}>
+          <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#FFC370", textTransform: "uppercase", marginBottom: 20 }}>
             Let&apos;s Work Together
           </p>
           <h2 style={{
             fontSize: "clamp(1.8rem, 3.5vw, 3rem)", fontWeight: 700,
             color: "#fff", lineHeight: 1.15,
-            fontFamily: "Georgia, serif", marginBottom: 20,
+            fontFamily: "Arial, sans-serif", marginBottom: 20,
           }}>
-            No matter the industry, size or type of data—our solutions satisfy any AI-data requirement.
+            No matter the industry, size or type of dataï¿½"our solutions satisfy any AI-data requirement.
           </h2>
-          <p style={{ fontSize: 15, color: "#9ca3af", lineHeight: 1.8, maxWidth: 520 }}>
+          <p style={{ fontSize: 15, color: "#6E7D71", lineHeight: 1.8, maxWidth: 520 }}>
             From data collection and annotation to model training at global scale,
             Lifewood is your end-to-end AI data partner.
           </p>
@@ -462,13 +462,13 @@ function CtaSection() {
         <div style={{ display: "flex", flexDirection: "column", gap: 12, flexShrink: 0 }}>
           <Link href="/contact-us" style={{
             display: "inline-flex", alignItems: "center", gap: 10,
-            background: "#F5A623", color: "#fff",
+            background: "#FFC370", color: "#fff",
             padding: "14px 28px", borderRadius: 999,
             fontSize: 15, fontWeight: 600, textDecoration: "none",
             whiteSpace: "nowrap", transition: "background 0.2s",
           }}
-            onMouseEnter={e => (e.currentTarget.style.background = "#e09610")}
-            onMouseLeave={e => (e.currentTarget.style.background = "#F5A623")}
+            onMouseEnter={e => (e.currentTarget.style.background = "#FFB347")}
+            onMouseLeave={e => (e.currentTarget.style.background = "#FFC370")}
           >
             Contact Us Now
             <svg width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -563,15 +563,15 @@ function HiddenAdminModal({
             width: 34,
             height: 34,
             borderRadius: "50%",
-            border: "1px solid #e5e7eb",
+            border: "1px solid rgba(19,48,32,0.16)",
             background: "#fff",
-            color: "#6b7280",
+            color: "#5B6A5E",
             cursor: "pointer",
             fontSize: 18,
             lineHeight: 1,
           }}
         >
-          ×
+          ï¿½-
         </button>
 
         <div style={{ marginBottom: 24 }}>
@@ -581,8 +581,8 @@ function HiddenAdminModal({
             gap: 8,
             borderRadius: 999,
             padding: "6px 12px",
-            background: "#f3f4f6",
-            color: "#374151",
+            background: "#F9F7F7",
+            color: "#133020",
             fontSize: 11,
             fontWeight: 700,
             letterSpacing: "0.12em",
@@ -594,20 +594,20 @@ function HiddenAdminModal({
           <h3 style={{
             fontSize: 28,
             lineHeight: 1.15,
-            color: "#111827",
-            fontFamily: "Georgia, serif",
+            color: "#046241",
+            fontFamily: "Arial, sans-serif",
             marginBottom: 10,
           }}>
             Hidden Admin Login
           </h3>
-          <p style={{ fontSize: 14, lineHeight: 1.7, color: "#6b7280", margin: 0 }}>
+          <p style={{ fontSize: 14, lineHeight: 1.7, color: "#5B6A5E", margin: 0 }}>
             Access is available only after the private homepage key sequence is entered.
           </p>
         </div>
 
         <form onSubmit={onSubmit} style={{ display: "grid", gap: 14 }}>
           <label style={{ display: "grid", gap: 8 }}>
-            <span style={{ fontSize: 13, fontWeight: 600, color: "#374151" }}>Username</span>
+            <span style={{ fontSize: 13, fontWeight: 600, color: "#133020" }}>Username</span>
             <input
               value={username}
               onChange={event => onUsernameChange(event.target.value)}
@@ -617,9 +617,9 @@ function HiddenAdminModal({
               style={{
                 width: "100%",
                 borderRadius: 14,
-                border: "1px solid #d1d5db",
-                background: isAuthenticated ? "#f9fafb" : "#fff",
-                color: "#111827",
+                border: "1px solid rgba(19,48,32,0.2)",
+                background: isAuthenticated ? "#F9F7F7" : "#fff",
+                color: "#046241",
                 padding: "14px 16px",
                 fontSize: 14,
                 outline: "none",
@@ -628,7 +628,7 @@ function HiddenAdminModal({
           </label>
 
           <label style={{ display: "grid", gap: 8 }}>
-            <span style={{ fontSize: 13, fontWeight: 600, color: "#374151" }}>Password</span>
+            <span style={{ fontSize: 13, fontWeight: 600, color: "#133020" }}>Password</span>
             <input
               type="password"
               value={password}
@@ -639,9 +639,9 @@ function HiddenAdminModal({
               style={{
                 width: "100%",
                 borderRadius: 14,
-                border: "1px solid #d1d5db",
-                background: isAuthenticated ? "#f9fafb" : "#fff",
-                color: "#111827",
+                border: "1px solid rgba(19,48,32,0.2)",
+                background: isAuthenticated ? "#F9F7F7" : "#fff",
+                color: "#046241",
                 padding: "14px 16px",
                 fontSize: 14,
                 outline: "none",
@@ -655,9 +655,9 @@ function HiddenAdminModal({
               padding: "12px 14px",
               fontSize: 13,
               lineHeight: 1.6,
-              background: isSuccess ? "#ecfdf3" : isError ? "#fef2f2" : "#f9fafb",
-              color: isSuccess ? "#166534" : isError ? "#b91c1c" : "#374151",
-              border: `1px solid ${isSuccess ? "#bbf7d0" : isError ? "#fecaca" : "#e5e7eb"}`,
+              background: isSuccess ? "rgba(4,98,65,0.12)" : isError ? "rgba(19,48,32,0.1)" : "#F9F7F7",
+              color: isSuccess ? "#046241" : isError ? "#133020" : "#133020",
+              border: `1px solid ${isSuccess ? "rgba(4,98,65,0.2)" : isError ? "rgba(19,48,32,0.2)" : "rgba(19,48,32,0.16)"}`,
             }}>
               {message}
             </div>
@@ -672,7 +672,7 @@ function HiddenAdminModal({
                   flex: 1,
                   border: "none",
                   borderRadius: 999,
-                  background: isBusy ? "#9ca3af" : "#111827",
+                  background: isBusy ? "#6E7D71" : "#046241",
                   color: "#fff",
                   padding: "14px 18px",
                   fontSize: 14,
@@ -692,7 +692,7 @@ function HiddenAdminModal({
                   flex: 1,
                   border: "none",
                   borderRadius: 999,
-                  background: isBusy ? "#9ca3af" : "#b91c1c",
+                  background: isBusy ? "#6E7D71" : "#133020",
                   color: "#fff",
                   padding: "14px 18px",
                   fontSize: 14,
@@ -711,9 +711,9 @@ function HiddenAdminModal({
               style={{
                 flex: 1,
                 borderRadius: 999,
-                border: "1px solid #d1d5db",
+                border: "1px solid rgba(19,48,32,0.2)",
                 background: "#fff",
-                color: "#374151",
+                color: "#133020",
                 padding: "14px 18px",
                 fontSize: 14,
                 fontWeight: 600,
@@ -729,7 +729,7 @@ function HiddenAdminModal({
   );
 }
 
-// ── Page ──────────────────────────────────────────────────────────────────────
+// ï¿½"ï¿½ï¿½"ï¿½ Page ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
 export default function HomePage() {
   const [typedSequence, setTypedSequence] = useState("");
   const [isHiddenAdminOpen, setIsHiddenAdminOpen] = useState(false);
@@ -870,10 +870,10 @@ export default function HomePage() {
  
     setIsAdminAuthenticated(true);
     setAdminStatus("success");
-    setAdminMessage(data?.message || "Redirecting to dashboard…");
+    setAdminMessage(data?.message || "Redirecting to dashboardâ€¦");
     setAdminPassword("");
  
-    // ── NEW: redirect to the admin dashboard after a short delay ──────────
+    // ï¿½"ï¿½ï¿½"ï¿½ NEW: redirect to the admin dashboard after a short delay ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
     setTimeout(() => {
         router.push("/admin-dashboard");
       }, 800);
@@ -909,3 +909,4 @@ export default function HomePage() {
     </>
   );
 }
+

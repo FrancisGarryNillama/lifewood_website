@@ -295,7 +295,7 @@ export function AnimatedVideoPlayer({
         style={{
           borderRadius: 28,
           overflow: "hidden",
-          background: "#111827",
+          background: "#046241",
           boxShadow: "0 24px 60px rgba(15, 23, 42, 0.20)",
         }}
       >
@@ -327,7 +327,7 @@ export function AnimatedVideoPlayer({
               ...buttonSpring,
               border: "none",
               borderRadius: 999,
-              background: "#F5A623",
+              background: "#FFC370",
               color: "#fff",
               padding: "11px 18px",
               fontSize: 13,
@@ -347,7 +347,7 @@ export function AnimatedVideoPlayer({
               border: "1px solid rgba(255,255,255,0.14)",
               borderRadius: 999,
               background: "rgba(255,255,255,0.06)",
-              color: "#e5e7eb",
+              color: "rgba(19,48,32,0.16)",
               padding: "11px 18px",
               fontSize: 13,
               fontWeight: 700,

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -8,18 +8,18 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { AnimatedSurface } from "@/app/components/animated/AnimatedPrimitives";
 
-// ── Shared: Tab Indicator ─────────────────────────────────────────────────────
+// ï¿½"ï¿½ï¿½"ï¿½ Shared: Tab Indicator ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
 function TabIndicator() {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 20 }}>
-      <span style={{ width: 20, height: 20, borderRadius: "50%", background: "#1a1a1a", display: "inline-block" }} />
-      <span style={{ width: 20, height: 20, borderRadius: "50%", border: "2px solid #9ca3af", display: "inline-block" }} />
-      <span style={{ display: "inline-block", width: 120, borderTop: "2px dashed #d1d5db", marginLeft: 4 }} />
+      <span style={{ width: 20, height: 20, borderRadius: "50%", background: "#133020", display: "inline-block" }} />
+      <span style={{ width: 20, height: 20, borderRadius: "50%", border: "2px solid #6E7D71", display: "inline-block" }} />
+      <span style={{ display: "inline-block", width: 120, borderTop: "2px dashed rgba(19,48,32,0.2)", marginLeft: 4 }} />
     </div>
   );
 }
 
-// ── Core Values Data ──────────────────────────────────────────────────────────
+// ï¿½"ï¿½ï¿½"ï¿½ Core Values Data ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
 const CORE_VALUES = [
   {
     letter: "D",
@@ -47,7 +47,7 @@ const CORE_VALUES = [
   },
 ];
 
-// ── Mission / Vision Data ─────────────────────────────────────────────────────
+// ï¿½"ï¿½ï¿½"ï¿½ Mission / Vision Data ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
 const TABS = {
   Mission: {
     heading: "Our Mission",
@@ -55,11 +55,11 @@ const TABS = {
   },
   Vision: {
     heading: "Our Vision",
-    body: "To be the world's most trusted and impactful AI data company—one that is recognised not only for the scale and quality of its solutions, but for the integrity, care, and innovation it brings to every partnership, community, and challenge it encounters.",
+    body: "To be the world's most trusted and impactful AI data company, one that is recognised not only for the scale and quality of its solutions, but for the integrity, care, and innovation it brings to every partnership, community, and challenge it encounters.",
   },
 };
 
-// ── Core Value Card ───────────────────────────────────────────────────────────
+// ï¿½"ï¿½ï¿½"ï¿½ Core Value Card ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
 function CoreValueCard({ letter, title, description }: (typeof CORE_VALUES)[0]) {
   const [hovered, setHovered] = useState(false);
   return (
@@ -72,8 +72,8 @@ function CoreValueCard({ letter, title, description }: (typeof CORE_VALUES)[0]) 
         gap: 16,
         padding: "32px 28px",
         borderRadius: 16,
-        border: `1px solid ${hovered ? "#d1d5db" : "#e5e7eb"}`,
-        background: hovered ? "#fafafa" : "#fff",
+        border: `1px solid ${hovered ? "rgba(19,48,32,0.2)" : "rgba(19,48,32,0.16)"}`,
+        background: hovered ? "#F9F7F7" : "#fff",
         transition: "all 0.2s",
         boxShadow: hovered ? "0 8px 32px rgba(0,0,0,0.07)" : "none",
       }}
@@ -81,28 +81,28 @@ function CoreValueCard({ letter, title, description }: (typeof CORE_VALUES)[0]) 
       {/* Letter badge */}
       <div style={{
         width: 48, height: 48, borderRadius: 12,
-        background: "#1a1a1a",
+        background: "#133020",
         display: "flex", alignItems: "center", justifyContent: "center",
         flexShrink: 0,
       }}>
-        <span style={{ color: "#fff", fontSize: 22, fontWeight: 800, fontFamily: "Georgia, serif" }}>
+        <span style={{ color: "#fff", fontSize: 22, fontWeight: 800, fontFamily: "Arial, sans-serif" }}>
           {letter}
         </span>
       </div>
       <h3 style={{
-        fontSize: 16, fontWeight: 700, color: "#1a1a1a",
+        fontSize: 16, fontWeight: 700, color: "#133020",
         textTransform: "uppercase", letterSpacing: "0.08em", margin: 0,
       }}>
         {title}
       </h3>
-      <p style={{ fontSize: 14, color: "#6b7280", lineHeight: 1.7, margin: 0 }}>
+      <p style={{ fontSize: 14, color: "#5B6A5E", lineHeight: 1.7, margin: 0 }}>
         {description}
       </p>
     </div>
   );
 }
 
-// ── Main Page ─────────────────────────────────────────────────────────────────
+// ï¿½"ï¿½ï¿½"ï¿½ Main Page ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
 export default function AboutUs() {
   const [activeTab, setActiveTab] = useState<"Mission" | "Vision">("Mission");
   const tab = TABS[activeTab];
@@ -142,17 +142,17 @@ export default function AboutUs() {
   return (
     <div style={{ background: "#fff", minHeight: "100vh" }}>
 
-      {/* ── 1. Hero / Intro ───────────────────────────────────────────────── */}
+      {/* ï¿½"ï¿½ï¿½"ï¿½ 1. Hero / Intro ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */}
       <section style={{ maxWidth: 1400, margin: "0 auto", padding: "72px 80px 60px" }}>
         <TabIndicator />
 
         <h1 style={{
           fontSize: "clamp(2.4rem, 5vw, 4rem)",
           fontWeight: 800,
-          color: "#1a1a1a",
+          color: "#133020",
           marginBottom: 28,
           lineHeight: 1.1,
-          fontFamily: "Georgia, serif",
+          fontFamily: "Arial, sans-serif",
           letterSpacing: "-0.02em",
         }}>
           About our company
@@ -160,13 +160,13 @@ export default function AboutUs() {
 
         {/* Two-tone paragraph matching the reference */}
         <p style={{ fontSize: 15, lineHeight: 1.8, maxWidth: 860, marginBottom: 36 }}>
-          <span style={{ color: "#F5A623" }}>
+          <span style={{ color: "#FFC370" }}>
             While we are motivated by business and economic objectives,{" "}
           </span>
-          <span style={{ color: "#1a1a1a" }}>
+          <span style={{ color: "#133020" }}>
             we remain committed to our core business beliefs{" "}
           </span>
-          <span style={{ color: "#2D6A4F" }}>
+          <span style={{ color: "#046241" }}>
             that shape our corporate and individual behaviour around the world.
           </span>
         </p>
@@ -176,18 +176,18 @@ export default function AboutUs() {
           href="/contact-us"
           style={{
             display: "inline-flex", alignItems: "center", gap: 10,
-            background: "#F5A623", color: "#fff",
+            background: "#FFC370", color: "#fff",
             padding: "12px 24px", borderRadius: 999,
             fontSize: 14, fontWeight: 600, textDecoration: "none",
             transition: "background 0.2s",
           }}
-          onMouseEnter={e => (e.currentTarget.style.background = "#e09610")}
-          onMouseLeave={e => (e.currentTarget.style.background = "#F5A623")}
+          onMouseEnter={e => (e.currentTarget.style.background = "#FFB347")}
+          onMouseLeave={e => (e.currentTarget.style.background = "#FFC370")}
         >
           Contact Us
           <span style={{
             display: "inline-flex", alignItems: "center", justifyContent: "center",
-            width: 28, height: 28, borderRadius: "50%", background: "#2D6A4F", flexShrink: 0,
+            width: 28, height: 28, borderRadius: "50%", background: "#046241", flexShrink: 0,
           }}>
             <svg width="13" height="13" viewBox="0 0 12 12" fill="none" aria-hidden="true">
               <path d="M2.5 6H9.5M6.5 3L9.5 6L6.5 9" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -196,7 +196,7 @@ export default function AboutUs() {
         </Link>
       </section>
 
-      {/* ── 2. Image Pair ─────────────────────────────────────────────────── */}
+      {/* ï¿½"ï¿½ï¿½"ï¿½ 2. Image Pair ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */}
       <section style={{ maxWidth: 1400, margin: "0 auto", padding: "0 80px 80px" }}>
         <div ref={imagePairRef} style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 20 }}>
           {/* Wide landscape image */}
@@ -240,12 +240,12 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* ── 3. Core Values ────────────────────────────────────────────────── */}
+      {/* ï¿½"ï¿½ï¿½"ï¿½ 3. Core Values ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */}
       <section style={{ maxWidth: 1400, margin: "0 auto", padding: "0 80px 100px" }}>
         {/* "Lets collaborate" label */}
         <p style={{
           fontSize: 12, fontWeight: 700, letterSpacing: "0.15em",
-          color: "#F5A623", textTransform: "uppercase", marginBottom: 12,
+          color: "#FFC370", textTransform: "uppercase", marginBottom: 12,
         }}>
           Lets collaborate
         </p>
@@ -253,14 +253,14 @@ export default function AboutUs() {
         <h2 style={{
           fontSize: "clamp(1.4rem, 2.5vw, 2rem)",
           fontWeight: 800, letterSpacing: "0.12em",
-          color: "#1a1a1a", textTransform: "uppercase",
-          marginBottom: 16, fontFamily: "Georgia, serif",
+          color: "#133020", textTransform: "uppercase",
+          marginBottom: 16, fontFamily: "Arial, sans-serif",
         }}>
           Core Value
         </h2>
 
         <p style={{
-          fontSize: 15, color: "#374151", lineHeight: 1.75,
+          fontSize: 15, color: "#133020", lineHeight: 1.75,
           maxWidth: 680, marginBottom: 48,
         }}>
           At Lifewood we empower our company and our clients to realise the transformative
@@ -280,14 +280,14 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* ── 4. Mission / Vision ───────────────────────────────────────────── */}
+      {/* ï¿½"ï¿½ï¿½"ï¿½ 4. Mission / Vision ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */}
       <section style={{
         maxWidth: 1400, margin: "0 auto", padding: "0 80px 100px",
       }}>
         <h2 style={{
           fontSize: "clamp(1.8rem, 3.5vw, 3rem)",
-          fontWeight: 700, color: "#1a1a1a", lineHeight: 1.2,
-          fontFamily: "Georgia, serif", letterSpacing: "-0.02em",
+          fontWeight: 700, color: "#133020", lineHeight: 1.2,
+          fontFamily: "Arial, sans-serif", letterSpacing: "-0.02em",
           marginBottom: 48,
         }}>
           What drives us today, and what inspires us for tomorrow
@@ -307,7 +307,7 @@ export default function AboutUs() {
           <div>
             {/* Tab pills */}
             <div style={{
-              display: "inline-flex", background: "#f3f4f6",
+              display: "inline-flex", background: "#F9F7F7",
               borderRadius: 999, padding: 4, marginBottom: 32, gap: 4,
             }}>
               {(["Mission", "Vision"] as const).map((t) => (
@@ -318,8 +318,8 @@ export default function AboutUs() {
                     padding: "8px 24px", borderRadius: 999, border: "none",
                     fontSize: 14, fontWeight: 600, cursor: "pointer",
                     transition: "all 0.2s",
-                    background: activeTab === t ? "#1a1a1a" : "transparent",
-                    color: activeTab === t ? "#fff" : "#6b7280",
+                    background: activeTab === t ? "#133020" : "transparent",
+                    color: activeTab === t ? "#fff" : "#5B6A5E",
                   }}
                 >
                   {t}
@@ -329,23 +329,23 @@ export default function AboutUs() {
 
             <h3 style={{
               fontSize: "clamp(1.4rem, 2vw, 1.8rem)",
-              fontWeight: 700, color: "#1a1a1a",
-              fontFamily: "Georgia, serif", marginBottom: 20,
+              fontWeight: 700, color: "#133020",
+              fontFamily: "Arial, sans-serif", marginBottom: 20,
             }}>
               {tab.heading}
             </h3>
-            <p style={{ fontSize: 15, color: "#374151", lineHeight: 1.8, margin: 0 }}>
+            <p style={{ fontSize: 15, color: "#133020", lineHeight: 1.8, margin: 0 }}>
               {tab.body}
             </p>
           </div>
         </div>
       </section>
 
-      {/* ── 5. Photo Gallery ("Be Amazed") ───────────────────────────────── */}
+      {/* ï¿½"ï¿½ï¿½"ï¿½ 5. Photo Gallery ("Be Amazed") ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */}
       <section style={{ maxWidth: 1400, margin: "0 auto", padding: "0 80px 100px" }}>
         <p style={{
           fontSize: 12, fontWeight: 700, letterSpacing: "0.15em",
-          color: "#F5A623", textTransform: "uppercase", marginBottom: 32,
+          color: "#FFC370", textTransform: "uppercase", marginBottom: 32,
         }}>
           Be Amazed
         </p>
@@ -401,3 +401,4 @@ export default function AboutUs() {
     </div>
   );
 }
+

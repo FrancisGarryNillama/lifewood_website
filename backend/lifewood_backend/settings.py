@@ -3,10 +3,12 @@ Django settings for lifewood_backend project.
 """
 
 import os
+from importlib.util import find_spec
 from pathlib import Path
 from urllib.parse import parse_qsl, urlparse
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+HAS_WHITENOISE = find_spec("whitenoise") is not None
 
 
 def _env_list(name: str, default: str) -> list[str]:
@@ -95,7 +97,6 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -108,6 +109,9 @@ MIDDLEWARE = [
     # session unlock flag set by /hidden-admin/unlock/.
     'hidden_admin.middleware.HiddenAdminProtectionMiddleware',
 ]
+
+if HAS_WHITENOISE:
+    MIDDLEWARE.insert(2, 'whitenoise.middleware.WhiteNoiseMiddleware')
 
 
 # ── CORS ──────────────────────────────────────────────────────────────────────
@@ -184,7 +188,11 @@ STORAGES = {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": (
+            "whitenoise.storage.CompressedManifestStaticFilesStorage"
+            if HAS_WHITENOISE
+            else "django.contrib.staticfiles.storage.StaticFilesStorage"
+        ),
     },
 }
 STORAGE_BUCKET_URL = os.environ.get("STORAGE_BUCKET_URL", "").rstrip("/")
