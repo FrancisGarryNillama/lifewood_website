@@ -14,6 +14,13 @@ def _env_list(name: str, default: str) -> list[str]:
     return [item.strip() for item in raw_value.split(",") if item.strip()]
 
 
+def _env_bool(name: str, default: bool) -> bool:
+    raw_value = os.environ.get(name)
+    if raw_value is None:
+        return default
+    return raw_value.strip().lower() in {"1", "true", "yes", "on"}
+
+
 def _database_config_from_env(default_path: Path) -> dict:
     database_url = os.environ.get("DATABASE_URL", "").strip()
     if not database_url:
@@ -55,9 +62,11 @@ def _database_config_from_env(default_path: Path) -> dict:
     return config
 
 # ── Security ──────────────────────────────────────────────────────────────────
-SECRET_KEY = 'django-insecure-mz_i&rgrhb2efw04%hr&4l_n*7310y2(=^xkjp*-&at4)j-+r1'
-
-DEBUG = True   # Set to False and configure properly before deploying to production.
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY",
+    "django-insecure-mz_i&rgrhb2efw04%hr&4l_n*7310y2(=^xkjp*-&at4)j-+r1",
+)
+DEBUG = _env_bool("DEBUG", True)
 
 ALLOWED_HOSTS = _env_list("ALLOWED_HOSTS", "localhost,127.0.0.1")
 
@@ -86,6 +95,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -117,8 +127,10 @@ CSRF_TRUSTED_ORIGINS = _env_list(
 SESSION_ENGINE = "django.contrib.sessions.backends.db"
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = "Lax"
-# In production set SESSION_COOKIE_SECURE = True (HTTPS only).
-SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SECURE_SSL_REDIRECT = _env_bool("SECURE_SSL_REDIRECT", not DEBUG)
 
 
 # ── URL / Templates ───────────────────────────────────────────────────────────
@@ -165,7 +177,16 @@ USE_TZ = True
 
 
 # ── Static files ──────────────────────────────────────────────────────────────
-STATIC_URL = 'static/'
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 STORAGE_BUCKET_URL = os.environ.get("STORAGE_BUCKET_URL", "").rstrip("/")
 FRONTEND_BASE_URL = os.environ.get("FRONTEND_BASE_URL", "").rstrip("/")
 BRAND_LOGO_URL = os.environ.get("BRAND_LOGO_URL", "").rstrip("/")
