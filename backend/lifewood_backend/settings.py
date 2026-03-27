@@ -167,6 +167,8 @@ USE_TZ = True
 # ── Static files ──────────────────────────────────────────────────────────────
 STATIC_URL = 'static/'
 STORAGE_BUCKET_URL = os.environ.get("STORAGE_BUCKET_URL", "").rstrip("/")
+FRONTEND_BASE_URL = os.environ.get("FRONTEND_BASE_URL", "").rstrip("/")
+BRAND_LOGO_URL = os.environ.get("BRAND_LOGO_URL", "").rstrip("/")
 MEDIA_URL = f"{STORAGE_BUCKET_URL}/" if STORAGE_BUCKET_URL else "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 

@@ -84,12 +84,19 @@ def _email_context(applicant: Applicant) -> dict:
         interview_display = interview_date.strftime("%B %d, %Y at %I:%M %p")
         timezone_name = interview_date.tzname() or timezone_name
 
+    logo_url = getattr(settings, "BRAND_LOGO_URL", "")
+    if not logo_url:
+        frontend_base_url = getattr(settings, "FRONTEND_BASE_URL", "").rstrip("/")
+        if frontend_base_url:
+            logo_url = f"{frontend_base_url}/assets/branding/lifewood-logo.svg"
+
     return {
         "applicant": applicant,
         "position": _position_label(applicant),
         "interview_date": interview_date,
         "interview_display": interview_display or "To be confirmed",
         "timezone_name": timezone_name,
+        "logo_url": logo_url,
     }
 
 

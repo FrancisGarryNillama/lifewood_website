@@ -49,7 +49,7 @@ export default function Footer() {
       }}>
         {/* Brand column */}
         <div>
-          <LifewoodLogo width={200} wordmarkColor="#ffffff" />
+          <LifewoodLogo width={200} withBadge padding="10px 16px" />
           <p style={{
             fontSize: 14, color: "rgba(255,255,255,0.55)",
             lineHeight: 1.75, marginTop: 20, marginBottom: 28, maxWidth: 280,

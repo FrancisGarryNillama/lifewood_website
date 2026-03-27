@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { ensureCsrfToken, getApiBaseUrl } from "@/app/lib/api";
+import LifewoodLogo from "@/app/components/LifewoodLogo";
 
 const API_BASE_URL = getApiBaseUrl();
 
@@ -482,10 +483,7 @@ export default function AdminDashboard() {
 
       <header style={{ background: "#111827", padding: "0 48px", height: 64, display: "flex", alignItems: "center", justifyContent: "space-between", position: "sticky", top: 0, zIndex: 100 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <div style={{ width: 28, height: 28, background: "#F5A623", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <svg width="14" height="14" viewBox="0 0 124 280" fill="none"><path d="M62 0L124 62V218L62 280L0 218V62L62 0Z" fill="#fff" /></svg>
-          </div>
-          <span style={{ color: "#fff", fontWeight: 700, fontSize: 15 }}>Lifewood</span>
+          <LifewoodLogo width={170} withBadge padding="8px 14px" />
           <span style={{ color: "rgba(255,255,255,0.3)", fontSize: 14 }}>/</span>
           <span style={{ color: "rgba(255,255,255,0.6)", fontSize: 14 }}>Admin Dashboard</span>
         </div>

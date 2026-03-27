@@ -2,6 +2,11 @@
 <html lang="en">
   <body style="margin:0;padding:0;background:#0f2418;font-family:Georgia,serif;color:#214233;">
     <div style="max-width:640px;margin:0 auto;background:#173c2b;">
+      {% if logo_url %}
+      <div style="padding:20px 24px 0;">
+        <img src="{{ logo_url }}" alt="Lifewood" style="display:block;width:220px;max-width:100%;height:auto;background:#ffffff;border-radius:14px;padding:10px 16px;" />
+      </div>
+      {% endif %}
       <div style="padding:18px 24px;color:#f4f1e8;font-family:Arial,sans-serif;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;">
         Lifewood HR · Hiring Decision
       </div>
