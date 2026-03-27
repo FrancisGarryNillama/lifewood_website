@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { getApiBaseUrl } from "@/app/lib/api";
+import { AnimatedImageCard } from "@/app/components/animated/AnimatedPrimitives";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function useInView(threshold = 0.15) {
@@ -326,7 +327,43 @@ function StatsBanner() {
         </h2>
       </div>
       <div style={{
-        display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+        gap: 20,
+        marginBottom: 28,
+      }}>
+        {[
+          "https://framerusercontent.com/images/EfuuWuqk2ibqcvZK8Q4ZM59MgsQ.jpeg?width=1280&height=853",
+          "https://framerusercontent.com/images/EfuuWuqk2ibqcvZK8Q4ZM59MgsQ.jpeg?width=1280&height=853",
+        ].map((src, index) => (
+          <AnimatedImageCard
+            key={`${src}-${index}`}
+            src={src}
+            alt={`Lifewood innovation project showcase ${index + 1}`}
+            width={1280}
+            height={853}
+            delay={index * 0.12}
+            hoverScale={1.045}
+            frameStyle={{ borderRadius: 24 }}
+            imageStyle={{ height: "100%" }}
+            overlay={
+              <div
+                style={{
+                  width: "100%",
+                  padding: "22px 22px 20px",
+                  background: "linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.72) 100%)",
+                }}
+              >
+                <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", color: "#FDE68A", textTransform: "uppercase" }}>
+                  Innovation In Motion
+                </span>
+              </div>
+            }
+          />
+        ))}
+      </div>
+      <div style={{
+        display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
         gap: 2, borderRadius: 20, overflow: "hidden",
         border: "1px solid #e5e7eb",
       }}>
@@ -408,7 +445,7 @@ function CtaSection() {
       }}>
         <div>
           <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#F5A623", textTransform: "uppercase", marginBottom: 20 }}>
-            Let's Work Together
+            Let&apos;s Work Together
           </p>
           <h2 style={{
             fontSize: "clamp(1.8rem, 3.5vw, 3rem)", fontWeight: 700,
@@ -838,7 +875,7 @@ export default function HomePage() {
  
     // ── NEW: redirect to the admin dashboard after a short delay ──────────
     setTimeout(() => {
-        router.push("/admin/dashboard");
+        router.push("/admin-dashboard");
       }, 800);
  
     } catch (error) {

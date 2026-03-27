@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path, include
 
 urlpatterns = [
@@ -12,3 +14,6 @@ urlpatterns = [
     # Public applicant submission + admin list + auth status
     path('api/', include('applicants.urls', namespace='applicants')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

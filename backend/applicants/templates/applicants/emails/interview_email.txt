@@ -1,0 +1,14 @@
+LIFEWOOD HR - HIRING DECISION
+
+Hi, {{ applicant.first_name }} {{ applicant.last_name }}
+
+Thank you for your interest in Lifewood.
+Position Applied: {{ position }}
+We would like to proceed with your interview.
+Interview Date & Time: {{ interview_display }}
+Timezone: {{ timezone_name }}
+
+Please be ready at the scheduled time. If you need to reschedule, kindly reply to this email.
+
+Warm regards,
+Lifewood HR Team

@@ -1,6 +1,13 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
+
+import { AnimatedSurface } from "@/app/components/animated/AnimatedPrimitives";
 
 function TabIndicator() {
   return (
@@ -21,6 +28,28 @@ const PILLARS = [
 ];
 
 export default function PhilanthropyAndImpact() {
+  const impactVisualRef = useRef<HTMLDivElement | null>(null);
+  const impactImageRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      gsap.to(impactImageRef.current, {
+        yPercent: -10,
+        ease: "none",
+        scrollTrigger: {
+          trigger: impactVisualRef.current,
+          start: "top 85%",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }, impactVisualRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <div style={{ background: "#fff", minHeight: "100vh" }}>
 
@@ -60,6 +89,35 @@ export default function PhilanthropyAndImpact() {
             ))}
           </div>
         </div>
+      </section>
+
+      <section style={{ maxWidth: 1400, margin: "0 auto", padding: "80px 80px 0" }}>
+        <motion.div
+          ref={impactVisualRef}
+          initial={{ opacity: 0, y: 36 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <AnimatedSurface
+            style={{
+              borderRadius: 28,
+              overflow: "hidden",
+              border: "1px solid #e5e7eb",
+              boxShadow: "0 18px 48px rgba(15, 23, 42, 0.10)",
+            }}
+          >
+            <div ref={impactImageRef}>
+              <Image
+                src="https://framerusercontent.com/images/7RZ9ESz7UTTmxn6ifh8I9jHlHA.png?width=1004&height=591"
+                alt="Lifewood philanthropy and impact initiative"
+                width={1004}
+                height={591}
+                style={{ display: "block", width: "100%", height: "auto" }}
+              />
+            </div>
+          </AnimatedSurface>
+        </motion.div>
       </section>
 
       <section style={{ maxWidth: 1400, margin: "0 auto", padding: "100px 80px 80px" }}>

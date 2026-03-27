@@ -1,7 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import { AnimatedYouTubeEmbed } from "@/app/components/animated/AnimatedPrimitives";
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 const PROJECTS = [
@@ -154,6 +158,31 @@ function ProjectCard({
 
 // ── Main Page ─────────────────────────────────────────────────────────────────
 export default function AiProjects() {
+  const spotlightRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        spotlightRef.current,
+        { backgroundPosition: "0% 0%" },
+        {
+          backgroundPosition: "0% 100%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: spotlightRef.current,
+            start: "top 85%",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
+    }, spotlightRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <div style={{ background: "#fff", minHeight: "100vh" }}>
 
@@ -215,6 +244,35 @@ export default function AiProjects() {
             </svg>
           </span>
         </Link>
+      </section>
+
+      <section
+        ref={spotlightRef}
+        style={{
+          background: "linear-gradient(180deg, #111827 0%, #0f172a 100%)",
+          backgroundSize: "100% 200%",
+          padding: "0 0 80px",
+        }}
+      >
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 80px" }}>
+          <AnimatedYouTubeEmbed
+            videoId="g_JvAVL0WY4"
+            title="Lifewood AI projects video"
+            caption={
+              <div style={{ padding: "28px 28px 20px" }}>
+                <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#F5A623", textTransform: "uppercase", marginBottom: 12 }}>
+                  Project Spotlight
+                </p>
+                <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 700, color: "#fff", fontFamily: "Georgia, serif", lineHeight: 1.2, margin: "0 0 10px" }}>
+                  See how Lifewood delivers AI data services at scale
+                </h2>
+                <p style={{ fontSize: 14, color: "#9ca3af", lineHeight: 1.75, margin: 0, maxWidth: 760 }}>
+                  This featured video sits ahead of the project grid in the same broad, high-impact format used across Lifewood&apos;s AI service storytelling.
+                </p>
+              </div>
+            }
+          />
+        </div>
       </section>
 
       {/* ── Projects Section ─────────────────────────────────────────────── */}

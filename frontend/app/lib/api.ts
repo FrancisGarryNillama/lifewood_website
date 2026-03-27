@@ -1,4 +1,9 @@
 export function getApiBaseUrl() {
+  const configuredUrl = process.env.NEXT_PUBLIC_API_BASE_URL?.trim();
+  if (configuredUrl) {
+    return configuredUrl.replace(/\/$/, "");
+  }
+
   if (typeof window !== "undefined") {
     return `http://${window.location.hostname}:8000`;
   }

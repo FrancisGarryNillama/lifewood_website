@@ -1,7 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import { AnimatedYouTubeEmbed } from "@/app/components/animated/AnimatedPrimitives";
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 const CATEGORIES = ["All", "Company Updates", "AI & Technology", "Community", "Awards", "Events"];
@@ -209,10 +213,34 @@ function NewsCard({ item }: { item: typeof NEWS_ITEMS[0] }) {
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function InternalNews() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const featuredVideoRef = useRef<HTMLDivElement | null>(null);
 
   const featured = NEWS_ITEMS.find(n => n.featured);
   const rest = NEWS_ITEMS.filter(n => !n.featured);
   const filtered = activeCategory === "All" ? rest : rest.filter(n => n.category === activeCategory);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        featuredVideoRef.current,
+        { backgroundPosition: "50% 0%" },
+        {
+          backgroundPosition: "50% 100%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: featuredVideoRef.current,
+            start: "top 85%",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
+    }, featuredVideoRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <div style={{ background: "#fff", minHeight: "100vh" }}>
@@ -235,6 +263,35 @@ export default function InternalNews() {
       </section>
 
       {/* ── News Feed ────────────────────────────────────────────────────── */}
+      <section
+        ref={featuredVideoRef}
+        style={{
+          maxWidth: 1400,
+          margin: "0 auto",
+          padding: "0 80px 72px",
+          background: "linear-gradient(180deg, transparent 0%, rgba(15,23,42,0.02) 100%)",
+          backgroundSize: "100% 200%",
+        }}
+      >
+        <AnimatedYouTubeEmbed
+          videoId="ccyrQ87EJag"
+          title="Lifewood internal news video"
+          caption={
+            <div style={{ padding: "28px 28px 20px" }}>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#F5A623", textTransform: "uppercase", marginBottom: 10 }}>
+                Featured Update
+              </p>
+              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.3rem)", fontWeight: 700, color: "#fff", fontFamily: "Georgia, serif", lineHeight: 1.2, margin: "0 0 10px" }}>
+                Internal video highlight
+              </h2>
+              <p style={{ fontSize: 14, color: "#9ca3af", lineHeight: 1.75, margin: 0, maxWidth: 760 }}>
+                This embedded feature mirrors the bold media-led storytelling treatment used on Lifewood&apos;s news reference page.
+              </p>
+            </div>
+          }
+        />
+      </section>
+
       <section style={{ maxWidth: 1400, margin: "0 auto", padding: "0 80px 100px" }}>
 
         {/* Category filter */}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body style="margin:0;padding:0;background:#0f2418;font-family:Georgia,serif;color:#214233;">
+    <div style="max-width:640px;margin:0 auto;background:#f7f7f2;">
+      <div style="padding:18px 24px;background:#0f2418;color:#8ea08f;font-family:Arial,sans-serif;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;">
+        Lifewood HR · Hiring Decision
+      </div>
+      <div style="padding:28px 36px 20px;background:#f7f7f2;">
+        <div style="font-family:Arial,sans-serif;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:#98a3b3;margin-bottom:10px;">
+          An Update on Your Application
+        </div>
+        <div style="font-size:48px;line-height:1.08;color:#214233;font-weight:700;">Lifewood Application Update - Interview Schedule</div>
+      </div>
+      <div style="background:#d39a28;padding:10px 36px;font-family:Arial,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#fff;">
+        Lifewood · AI-Powered Data Solutions · Always On, Never Off
+      </div>
+      <div style="padding:36px;background:#f7f7f2;">
+        <div style="font-family:Arial,sans-serif;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#98a3b3;margin-bottom:10px;">
+          Dear Applicant
+        </div>
+        <div style="font-size:28px;line-height:1.2;color:#214233;font-weight:700;margin-bottom:24px;">
+          Hi, {{ applicant.first_name }} {{ applicant.last_name }}
+        </div>
+        <div style="font-family:Arial,sans-serif;font-size:16px;line-height:1.8;color:#344054;">
+          Dear {{ applicant.first_name }} {{ applicant.last_name }},<br /><br />
+          Thank you for your interest in Lifewood.<br />
+          Position Applied: {{ position }}<br />
+          We would like to proceed with your interview.<br />
+          Interview Date &amp; Time: {{ interview_display }}<br />
+          Timezone: {{ timezone_name }}<br /><br />
+          Please be ready at the scheduled time. If you need to reschedule, kindly reply to this email.
+        </div>
+        <div style="margin-top:36px;padding-top:24px;border-top:1px solid #e5e7eb;font-family:Arial,sans-serif;color:#667085;line-height:1.7;">
+          Warm regards,<br />
+          <strong style="color:#214233;">Lifewood HR Team</strong>
+        </div>
+      </div>
+      <div style="background:#173c2b;padding:14px 36px;font-family:Arial,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#8ea08f;">
+        Lifewood · Always On, Never Off
+      </div>
+    </div>
+  </body>
+</html>

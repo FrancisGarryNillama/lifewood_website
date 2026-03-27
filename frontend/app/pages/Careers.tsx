@@ -1,9 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { ensureCsrfToken, getApiBaseUrl } from "@/app/lib/api";
+import { AnimatedImageCard } from "@/app/components/animated/AnimatedPrimitives";
 
 const API_BASE_URL = getApiBaseUrl();
 
@@ -40,6 +43,7 @@ function ApplyModal({
   onClose: () => void;
 }) {
   const [form, setForm] = useState({ firstName: "", lastName: "", email: "", phone: "", coverLetter: "" });
+  const [cvFile, setCvFile] = useState<File | null>(null);
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -51,16 +55,27 @@ function ApplyModal({
     setStatus("submitting");
     setErrorMsg("");
 
+    if (!cvFile) {
+      setStatus("error");
+      setErrorMsg("Attach CV is required.");
+      return;
+    }
+
     try {
       const csrfToken = await ensureCsrfToken();
+      const formData = new FormData();
+      Object.entries({ ...form, position, department }).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+      formData.append("cv", cvFile);
+
       const res = await fetch(`${API_BASE_URL}/api/applicants/submit/`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           "X-CSRFToken": csrfToken,
         },
         credentials: "include",
-        body: JSON.stringify({ ...form, position, department }),
+        body: formData,
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.detail || "Submission failed.");
@@ -117,7 +132,7 @@ function ApplyModal({
             </div>
             <h3 style={{ fontSize: 20, fontWeight: 700, color: "#1a1a1a", fontFamily: "Georgia, serif", marginBottom: 10 }}>Application Submitted!</h3>
             <p style={{ fontSize: 14, color: "#6b7280", lineHeight: 1.7, marginBottom: 24 }}>
-              Thanks for applying for <strong>{position}</strong>. We'll be in touch soon.
+              Thanks for applying for <strong>{position}</strong>. We&apos;ll be in touch soon.
             </p>
             <button onClick={onClose} style={{ padding: "10px 24px", borderRadius: 999, border: "1px solid #e5e7eb", background: "#fff", fontSize: 14, fontWeight: 500, cursor: "pointer", color: "#374151" }}>
               Close
@@ -174,6 +189,21 @@ function ApplyModal({
                 placeholder="Tell us why you're a great fit…"
                 style={{ ...inputStyle(!!focused["coverLetter"]), resize: "vertical", fontFamily: "inherit", lineHeight: 1.6 }}
               />
+            </div>
+
+            <div>
+              <label style={{ fontSize: 13, fontWeight: 600, color: "#374151", display: "block", marginBottom: 6 }}>
+                Attach CV <span style={{ color: "#F5A623" }}>*</span>
+              </label>
+              <input
+                type="file"
+                accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                onChange={event => setCvFile(event.target.files?.[0] ?? null)}
+                style={{ ...inputStyle(false), padding: "9px 14px" }}
+              />
+              <p style={{ fontSize: 12, color: "#6b7280", margin: "8px 0 0" }}>
+                Accepted formats: PDF, DOC, DOCX. Max file size 5 MB.
+              </p>
             </div>
 
             {status === "error" && (
@@ -273,8 +303,40 @@ function JobCard({ title, department, location, type, description, onApply }: ty
 export default function Careers() {
   const [activeDept, setActiveDept] = useState("All");
   const [applyingTo, setApplyingTo] = useState<{ title: string; department: string } | null>(null);
+  const careerShowcaseRef = useRef<HTMLDivElement | null>(null);
+  const careerCopyRef = useRef<HTMLDivElement | null>(null);
+  const careerImageRef = useRef<HTMLDivElement | null>(null);
 
   const filtered = activeDept === "All" ? OPENINGS : OPENINGS.filter(j => j.department === activeDept);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: careerShowcaseRef.current,
+          start: "top 78%",
+          once: true,
+        },
+      });
+
+      timeline
+        .fromTo(
+          careerCopyRef.current,
+          { y: 44, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
+        )
+        .fromTo(
+          careerImageRef.current,
+          { y: 56, opacity: 0, scale: 0.95 },
+          { y: 0, opacity: 1, scale: 1, duration: 0.95, ease: "back.out(1.4)" },
+          "-=0.48"
+        );
+    }, careerShowcaseRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <div style={{ background: "#fff", minHeight: "100vh" }}>
@@ -296,7 +358,7 @@ export default function Careers() {
         </h1>
         <p style={{ fontSize: 15, color: "#374151", lineHeight: 1.8, maxWidth: 700, marginBottom: 36 }}>
           Help shape the future of AI. At Lifewood, we bring together passionate people
-          from 30+ countries to build the data infrastructure that powers the world's most
+          from 30+ countries to build the data infrastructure that powers the world&apos;s most
           advanced AI systems—while creating opportunities for communities everywhere.
         </p>
         <a href="#openings" style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#F5A623", color: "#fff", padding: "12px 24px", borderRadius: 999, fontSize: 14, fontWeight: 600, textDecoration: "none" }}>
@@ -305,6 +367,41 @@ export default function Careers() {
             <svg width="13" height="13" viewBox="0 0 12 12" fill="none"><path d="M2.5 6H9.5M6.5 3L9.5 6L6.5 9" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </span>
         </a>
+      </section>
+
+      <section style={{ maxWidth: 1400, margin: "0 auto", padding: "0 80px 80px" }}>
+        <div
+          ref={careerShowcaseRef}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "minmax(280px, 0.8fr) minmax(360px, 1.2fr)",
+            gap: 28,
+            alignItems: "center",
+          }}
+        >
+          <div ref={careerCopyRef}>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#F5A623", textTransform: "uppercase", marginBottom: 14 }}>
+              Careers Spotlight
+            </p>
+            <h2 style={{ fontSize: "clamp(1.8rem, 3vw, 2.8rem)", fontWeight: 700, color: "#1a1a1a", fontFamily: "Georgia, serif", lineHeight: 1.15, margin: "0 0 16px" }}>
+              Build meaningful work with a truly global team
+            </h2>
+            <p style={{ fontSize: 15, color: "#6b7280", lineHeight: 1.8, margin: 0 }}>
+              The careers page now opens with a more editorial media block, pairing a short recruitment message with an image treatment that feels closer to Lifewood&apos;s live reference.
+            </p>
+          </div>
+          <div ref={careerImageRef}>
+            <AnimatedImageCard
+              src="https://framerusercontent.com/images/DF2gzPqqVW8QGp7Jxwp1y5257xk.jpg?width=6000&height=4000"
+              alt="Lifewood careers team collaboration"
+              width={6000}
+              height={4000}
+              hoverScale={1.06}
+              frameStyle={{ borderRadius: 28, background: "#f8f9fa" }}
+              imageStyle={{ height: "100%" }}
+            />
+          </div>
+        </div>
       </section>
 
       {/* ── Perks Grid ───────────────────────────────────────────────────── */}

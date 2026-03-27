@@ -2,16 +2,64 @@
 Django settings for lifewood_backend project.
 """
 
+import os
 from pathlib import Path
+from urllib.parse import parse_qsl, urlparse
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+def _env_list(name: str, default: str) -> list[str]:
+    raw_value = os.environ.get(name, default)
+    return [item.strip() for item in raw_value.split(",") if item.strip()]
+
+
+def _database_config_from_env(default_path: Path) -> dict:
+    database_url = os.environ.get("DATABASE_URL", "").strip()
+    if not database_url:
+        return {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": default_path,
+        }
+
+    parsed = urlparse(database_url)
+    engine_map = {
+        "postgres": "django.db.backends.postgresql",
+        "postgresql": "django.db.backends.postgresql",
+        "pgsql": "django.db.backends.postgresql",
+        "mysql": "django.db.backends.mysql",
+        "sqlite": "django.db.backends.sqlite3",
+    }
+    engine = engine_map.get(parsed.scheme)
+    if not engine:
+        raise ValueError(f"Unsupported DATABASE_URL scheme: {parsed.scheme}")
+
+    if engine == "django.db.backends.sqlite3":
+        sqlite_path = parsed.path.lstrip("/") or str(default_path)
+        return {
+            "ENGINE": engine,
+            "NAME": sqlite_path,
+        }
+
+    options = dict(parse_qsl(parsed.query))
+    config = {
+        "ENGINE": engine,
+        "NAME": parsed.path.lstrip("/"),
+        "USER": parsed.username or "",
+        "PASSWORD": parsed.password or "",
+        "HOST": parsed.hostname or "",
+        "PORT": str(parsed.port or ""),
+    }
+    if options:
+        config["OPTIONS"] = options
+    return config
 
 # ── Security ──────────────────────────────────────────────────────────────────
 SECRET_KEY = 'django-insecure-mz_i&rgrhb2efw04%hr&4l_n*7310y2(=^xkjp*-&at4)j-+r1'
 
 DEBUG = True   # Set to False and configure properly before deploying to production.
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = _env_list("ALLOWED_HOSTS", "localhost,127.0.0.1")
 
 
 # ── Applications ──────────────────────────────────────────────────────────────
@@ -54,15 +102,15 @@ MIDDLEWARE = [
 
 # ── CORS ──────────────────────────────────────────────────────────────────────
 # Allow the Next.js dev server to call the Django API.
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-]
+CORS_ALLOWED_ORIGINS = _env_list(
+    "CORS_ALLOWED_ORIGINS",
+    "http://localhost:3000,http://127.0.0.1:3000",
+)
 CORS_ALLOW_CREDENTIALS = True   # Required so the session cookie is sent.
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-]
+CSRF_TRUSTED_ORIGINS = _env_list(
+    "CSRF_TRUSTED_ORIGINS",
+    "http://localhost:3000,http://127.0.0.1:3000",
+)
 
 
 # ── Sessions ──────────────────────────────────────────────────────────────────
@@ -96,10 +144,7 @@ WSGI_APPLICATION = 'lifewood_backend.wsgi.application'
 
 # ── Database ──────────────────────────────────────────────────────────────────
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': _database_config_from_env(BASE_DIR / 'db.sqlite3')
 }
 
 
@@ -121,8 +166,20 @@ USE_TZ = True
 
 # ── Static files ──────────────────────────────────────────────────────────────
 STATIC_URL = 'static/'
+STORAGE_BUCKET_URL = os.environ.get("STORAGE_BUCKET_URL", "").rstrip("/")
+MEDIA_URL = f"{STORAGE_BUCKET_URL}/" if STORAGE_BUCKET_URL else "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
+DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "Lifewood HR <hr@lifewood.local>")
+EMAIL_SERVICE_API_KEY = os.environ.get("EMAIL_SERVICE_API_KEY", "")
+EMAIL_HOST = os.environ.get("EMAIL_HOST", "")
+EMAIL_PORT = int(os.environ.get("EMAIL_PORT", "587"))
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
+EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", "true").lower() == "true"
 
 
 # ── Logging ───────────────────────────────────────────────────────────────────

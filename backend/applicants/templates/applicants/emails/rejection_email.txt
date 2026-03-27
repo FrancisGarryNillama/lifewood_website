@@ -1,0 +1,13 @@
+LIFEWOOD HR - HIRING DECISION
+
+Hi, {{ applicant.first_name }} {{ applicant.last_name }}
+
+Thank you for taking the time to apply to Lifewood.
+Position Applied: {{ position }}
+After careful review, we are unable to proceed with your application at this time.
+Status: Rejected
+
+We appreciate your interest and encourage you to apply again for future opportunities.
+
+Warm regards,
+Lifewood HR Team

@@ -1,0 +1,13 @@
+LIFEWOOD HR - HIRING DECISION
+
+Congratulations, {{ applicant.first_name }} {{ applicant.last_name }}.
+
+Thank you for your interest in the {{ position }} position at Lifewood and for the time you invested in your application.
+After careful consideration, we are pleased to inform you that we will be moving forward with your application.
+
+Position Applied For: {{ position }}
+
+Our HR team will be in touch with you shortly regarding the next steps. We look forward to having you as part of the Lifewood family.
+
+Warm regards,
+Lifewood HR Team

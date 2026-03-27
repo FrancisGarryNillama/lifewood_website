@@ -1,7 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import { AnimatedSurface } from "@/app/components/animated/AnimatedPrimitives";
 
 // ── Shared: Tab Indicator ─────────────────────────────────────────────────────
 function TabIndicator() {
@@ -54,17 +59,6 @@ const TABS = {
   },
 };
 
-// ── Photo Gallery Data ────────────────────────────────────────────────────────
-// Using placeholder gradients to represent the gallery images from the live site
-const GALLERY_ITEMS = [
-  { bg: "#c8d5c0", aspect: "2/3", label: "Team photo" },
-  { bg: "#b8c4b0", aspect: "4/3", label: "Office" },
-  { bg: "#9aab92", aspect: "1/1", label: "Community" },
-  { bg: "#d4ddd0", aspect: "3/4", label: "People" },
-  { bg: "#aab8a2", aspect: "4/3", label: "Workspace" },
-  { bg: "#c0cbb8", aspect: "1/1", label: "Culture" },
-];
-
 // ── Core Value Card ───────────────────────────────────────────────────────────
 function CoreValueCard({ letter, title, description }: (typeof CORE_VALUES)[0]) {
   const [hovered, setHovered] = useState(false);
@@ -112,6 +106,38 @@ function CoreValueCard({ letter, title, description }: (typeof CORE_VALUES)[0]) 
 export default function AboutUs() {
   const [activeTab, setActiveTab] = useState<"Mission" | "Vision">("Mission");
   const tab = TABS[activeTab];
+  const imagePairRef = useRef<HTMLDivElement | null>(null);
+  const leftImageRef = useRef<HTMLDivElement | null>(null);
+  const rightImageRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: imagePairRef.current,
+          start: "top 78%",
+          once: true,
+        },
+      });
+
+      timeline
+        .fromTo(
+          leftImageRef.current,
+          { x: -72, opacity: 0, rotate: -2 },
+          { x: 0, opacity: 1, rotate: 0, duration: 0.9, ease: "power3.out" }
+        )
+        .fromTo(
+          rightImageRef.current,
+          { x: 72, opacity: 0, rotate: 2 },
+          { x: 0, opacity: 1, rotate: 0, duration: 0.9, ease: "power3.out" },
+          "-=0.5"
+        );
+    }, imagePairRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <div style={{ background: "#fff", minHeight: "100vh" }}>
@@ -172,22 +198,44 @@ export default function AboutUs() {
 
       {/* ── 2. Image Pair ─────────────────────────────────────────────────── */}
       <section style={{ maxWidth: 1400, margin: "0 auto", padding: "0 80px 80px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 20 }}>
+        <div ref={imagePairRef} style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 20 }}>
           {/* Wide landscape image */}
-          <div style={{
-            borderRadius: 20, overflow: "hidden", height: 480,
-            background: "linear-gradient(135deg, #c8d5c0 0%, #8fa888 100%)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-          }}>
-            <span style={{ color: "#fff", fontSize: 13, fontWeight: 500, opacity: 0.7 }}>Office photo</span>
+          <div ref={leftImageRef}>
+            <AnimatedSurface
+              style={{
+                borderRadius: 24,
+                overflow: "hidden",
+                height: 480,
+                boxShadow: "0 20px 48px rgba(15, 23, 42, 0.12)",
+              }}
+            >
+              <Image
+                src="https://framerusercontent.com/images/sTK6sybbKO4rqkc70E4AtawoRc.jpg?width=2560&height=1440"
+                alt="Lifewood office and team collaboration"
+                width={2560}
+                height={1440}
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+            </AnimatedSurface>
           </div>
           {/* Portrait image */}
-          <div style={{
-            borderRadius: 20, overflow: "hidden", height: 480,
-            background: "linear-gradient(135deg, #b8c9b0 0%, #6b8f72 100%)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-          }}>
-            <span style={{ color: "#fff", fontSize: 13, fontWeight: 500, opacity: 0.7 }}>Team photo</span>
+          <div ref={rightImageRef}>
+            <AnimatedSurface
+              style={{
+                borderRadius: 24,
+                overflow: "hidden",
+                height: 480,
+                boxShadow: "0 20px 48px rgba(15, 23, 42, 0.12)",
+              }}
+            >
+              <Image
+                src="https://framerusercontent.com/images/pi5OJpoXVOCoeElqYLWoXIdGn1U.png?width=946&height=1180"
+                alt="Lifewood team portrait"
+                width={946}
+                height={1180}
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+            </AnimatedSurface>
           </div>
         </div>
       </section>

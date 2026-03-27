@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 
+import { AnimatedVideoPlayer } from "@/app/components/animated/AnimatedPrimitives";
+
 function TabIndicator() {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 20 }}>
@@ -49,6 +51,27 @@ export default function TypeDAigc() {
       </section>
 
       {/* ── Approach Statement ───────────────────────────────────────────── */}
+      <section style={{ maxWidth: 1400, margin: "0 auto", padding: "0 80px 80px" }}>
+        <AnimatedVideoPlayer
+          src="https://framerusercontent.com/assets/OYykWaWrUmfZYDy3CJnT4GUNL8.mp4"
+          title="Lifewood AIGC showcase video"
+          rotateY={16}
+          caption={
+            <div style={{ padding: "28px 28px 20px", background: "linear-gradient(135deg, #111827 0%, #1f2937 100%)" }}>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#F5A623", textTransform: "uppercase" as const, marginBottom: 10 }}>
+                AIGC Showcase
+              </p>
+              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 700, color: "#fff", fontFamily: "Georgia, serif", lineHeight: 1.2, margin: "0 0 10px" }}>
+                A cinematic example of Lifewood&apos;s generative content workflow
+              </h2>
+              <p style={{ fontSize: 14, color: "#cbd5e1", lineHeight: 1.75, margin: 0, maxWidth: 780 }}>
+                Positioned as a marquee media moment, this video follows the same polished, rounded presentation style used on Lifewood&apos;s AIGC reference page.
+              </p>
+            </div>
+          }
+        />
+      </section>
+
       <section style={{ background: "#111827", padding: "80px 0" }}>
         <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 80px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>

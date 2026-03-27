@@ -9,9 +9,15 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@radix-ui/react-aspect-ratio": "^1.1.8",
+    "@radix-ui/react-slot": "^1.2.4",
+    "@react-spring/web": "^10.0.3",
+    "framer-motion": "^12.38.0",
+    "gsap": "^3.14.2",
     "next": "16.1.6",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "react-scroll-motion": "^0.3.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

@@ -7,6 +7,7 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.db import models
+from django.urls import reverse
 
 
 def _build_keystream(nonce: bytes, length: int) -> bytes:
@@ -71,6 +72,18 @@ class EncryptedEmailField(EncryptedTextField):
 
 
 class Applicant(models.Model):
+    class Status(models.TextChoices):
+        PENDING = "pending", "Pending"
+        APPROVED = "approved", "Approved"
+        REJECTED = "rejected", "Rejected"
+        INTERVIEW_SCHEDULED = "interview_scheduled", "Interview Scheduled"
+
+    class EmailType(models.TextChoices):
+        NONE = "", "None"
+        APPROVAL = "approval", "Approval"
+        REJECTION = "rejection", "Rejection"
+        INTERVIEW = "interview", "Interview"
+
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
 
@@ -87,6 +100,15 @@ class Applicant(models.Model):
     position = models.CharField(max_length=200, blank=True)
     department = models.CharField(max_length=100, blank=True)
     cover_letter = models.TextField(blank=True)
+    cv_url = models.CharField(max_length=500, blank=True)
+    status = models.CharField(
+        max_length=32,
+        choices=Status.choices,
+        default=Status.PENDING,
+    )
+    interview_date = models.DateTimeField(blank=True, null=True)
+    email_sent_at = models.DateTimeField(blank=True, null=True)
+    last_email_type = models.CharField(max_length=32, choices=EmailType.choices, blank=True)
 
     submitted_at = models.DateTimeField(auto_now_add=True)
 
@@ -96,3 +118,6 @@ class Applicant(models.Model):
     def __str__(self):
         label = self.inquiry_type or self.position or "Inquiry"
         return f"{self.first_name} {self.last_name} - {label}"
+
+    def get_cv_download_path(self) -> str:
+        return reverse("applicants:download_cv", args=[self.pk])
